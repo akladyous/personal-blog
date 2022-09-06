@@ -1,0 +1,10 @@
+
+<%# if !flash.empty? %>
+<div class="flash-errors">
+    <% flash.each do |name, msg| %>
+            <div class="alert alert-<%= name == 'notice' ? 'success' : 'danger' %>" role="alert">
+                <%= msg %>
+            </div>
+        <% end %>
+    </div>
+<%# end %>

@@ -1,0 +1,43 @@
+<!-- <style>
+  .form-control::-webkit-input-placeholder {
+    font-style: italic;
+    font-size: .8em;
+  } -->
+
+</style>
+    <div class="container mt-4">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-5 col-md-5 col-sm-5">
+                <div class="card">
+                    <div class="card-header text-center">
+                        Reset Password
+                    </div>
+                    <div class="card-body">
+                        <div class="user-avatar">
+                            <%= image_tag("avatar.jpeg", size: '100x100', alt:'avatar', class: 'rounded mx-auto d-block') %>
+                        </div>
+
+                        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { "data-turbo": false ,method: :post }) do |f| %>
+                            <%# render "devise/shared/error_messages", resource: resource %>
+
+                            <div class="form-group mb-2">
+                                <%= f.label :email, { class: 'form-label'} %>
+                                <%= f.email_field :email, {class: "form-control", autofocus: true, autocomplete: "off" } %>
+                                <%= feedback_for? resource, :email %>
+                            </div>
+
+                            <div class="form-control text-center border-0 mt-3">
+                                <%= f.submit "Reset Password", { class: "btn btn-light rounded-pill py-2 px-4" } %>
+                            </div>
+                        <% end %>
+
+                        <div class="form-group mb-2">
+                            <%= render "devise/shared/links" %>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

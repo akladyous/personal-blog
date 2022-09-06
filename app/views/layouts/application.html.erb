@@ -1,0 +1,14 @@
+<html>
+  <head>
+    <%= render 'head' %>
+  </head>
+  <body>
+    <header>
+        <%= render 'header' %>
+    </header>
+    <%= content_for :content or yield %>
+    <footer>
+        <%= render 'footer' %>
+    </footer>
+  </body>
+</html>

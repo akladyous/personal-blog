@@ -1,0 +1,41 @@
+/********** Template CSS **********/
+
+.navbar {
+    padding: 5px 25px !important;
+    height: 70px;
+}
+
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f067";
+    font-family: "Font Awesome 5 Free";
+    font-size: 10px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+.navbar .navbar-nav .nav-link {
+    position: relative;
+    margin-right: 25px;
+    font-weight: 500;
+    outline: none;
+    transition: 1s;
+}
+
+.user-menu {
+    display: flex;
+    justify-items: center;
+}
+/* btn btn-light rounded-pill py-2 px-4 ms-3 d-none d-lg-block */
+.user-menu .btn {
+    border: none;
+    border-radius: 25px;
+    padding-block: 8px !important;
+    padding-inline: 20px !important;
+    margin: 0 20px;
+}
+.current-user {
+    text-decoration: none;
+    background-color: transparent;
+    margin: auto;
+}
