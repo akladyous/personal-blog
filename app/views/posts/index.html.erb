@@ -1,11 +1,12 @@
-<% content_for(:title, "Listing Report") %>
-<p style="color: green"><%= notice %></p>
+<% content_for(:title, "Posts home page") %>
 <div id="posts">
-	<% @posts.each do |post| %>
-		<%= render post %>
-		<p>
-			<%= link_to "Show this post", post %>
-		</p>
+	<%= turbo_frame_tag "public_posts" do %>
+		<% @posts.each do |post| %>
+			<%= turbo_frame_tag dom_id(post), src: post_path(post) %>
+		<% end %>
+		<%# render 'post_preview', post: post %>
+		<%# link_to "Show this post", post %>
 	<% end %>
 </div>
-<%= link_to "New post", new_post_path %>
+<%# link_to "New post", new_post_path %>
+<%= console %>

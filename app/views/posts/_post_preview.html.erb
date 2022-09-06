@@ -1,0 +1,44 @@
+<%= turbo_frame_tag dom_id(post) do %>
+	<div id="<%= dom_id post %>">
+		<div class="blog-author">
+			<div class="row">
+				<div class="col-auto">
+					<span class="text-start"><%= post.user.email %></span>
+				</div>
+				<div class="col-auto text-start">
+					<span class=""><%= post.created_at.strftime("%b %d") %></span>
+					<%# .strftime("%d %b %y") %>
+				</div>
+				<div class="col-auto text-start">
+					<span class="">Member only</span>
+					<%# .strftime("%d %b %y") %>
+				</div>
+			</div>
+		</div>
+		<div class="blog-title">
+			<div class="row">
+				<div class="col-12">
+					<h3><%= post.title %></h3>
+				</div>
+			</div>
+		</div>
+		<div class="blog-content">
+			<div class="row">
+				<div class="col-8 h-100">
+					<%= post.content.to_plain_text.truncate(400) %>
+				</div>
+				<div class="col-4">
+					<% blob = post.content.embeds.first.blob %>
+					<div class="container-fluid">
+						<% if blob.representable? %>
+							<%= image_tag blob.representation(
+                        resize_to_fill: local_assigns[:in_gallery] ? [200, 200, gravity: 'Center'] : [ 400, 300 ]),
+                        { class: "img-fluid rounded-start rounded-3", alt: "blog-image", } %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<%# post.content %>
+	</div>
+<% end %>

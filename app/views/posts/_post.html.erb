@@ -1,4 +1,6 @@
-<div id="<%= dom_id post %>">
-	<h1><%= post.title %></h1>
-	<%= post.content %>
-</div>
+<%= turbo_frame_tag dom_id post do %>
+	<div id="<%= dom_id post %>">
+		<h1><%= post.title %></h1>
+		<%= post.content %>
+	</div>
+<% end %>
