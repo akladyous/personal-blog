@@ -1,2 +1,61 @@
-@import 'bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons';
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
+@import "actiontext.css";
+
+trix-toolbar {
+    .trix-dialog--color {
+        max-width: 265px;
+
+        .trix-button-group {
+            margin: 1px;
+
+            button {
+                width: 28px;
+
+                &:after {
+                    content: "Ab";
+                }
+
+                &.trix-active::after {
+                    content: "✓";
+                }
+            }
+
+            [data-trix-attribute="color1"] {
+                color: rgb(255, 0, 0);
+            }
+
+            [data-trix-attribute="color2"] {
+                color: rgb(0, 255, 0);
+            }
+
+            [data-trix-attribute="color3"] {
+                color: rgb(0, 0, 255);
+            }
+
+            [data-trix-attribute="color4"] {
+                color: rgb(255, 0, 255);
+            }
+
+            [data-trix-attribute="color5"] {
+                color: rgb(0, 255, 255);
+            }
+
+            [data-trix-attribute="color6"] {
+                color: rgb(255, 255, 0);
+            }
+
+            [data-trix-attribute="color7"] {
+                color: rgb(255, 128, 0);
+            }
+
+            [data-trix-attribute="color8"] {
+                color: rgb(128, 0, 255);
+            }
+
+            [data-trix-attribute="color9"] {
+                color: rgb(128, 128, 128);
+            }
+        }
+    }
+}
