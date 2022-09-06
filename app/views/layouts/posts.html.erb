@@ -1,0 +1,10 @@
+<% content_for :content do %>
+	<%= turbo_frame_tag "posts_home" do %>
+		<%= render 'title' %>
+		<div class="container mt-5">
+			<%= render 'flash' %>
+			<%= yield %>
+		</div>
+	<% end %>
+<% end %>
+<%= render template: "layouts/application" %>
