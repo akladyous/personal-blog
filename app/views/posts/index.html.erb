@@ -2,11 +2,12 @@
 <div id="posts">
 	<%= turbo_frame_tag "public_posts" do %>
 		<% @posts.each do |post| %>
-			<%= turbo_frame_tag dom_id(post), src: post_path(post) %>
+			<%# turbo_frame_tag dom_id(post), src: post_path(post) %>
+			<%= render 'post_preview', post: post %>
 		<% end %>
 		<%# render 'post_preview', post: post %>
 		<%# link_to "Show this post", post %>
 	<% end %>
 </div>
 <%# link_to "New post", new_post_path %>
-<%= console %>
+<%# console %>

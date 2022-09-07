@@ -1,44 +1,53 @@
 <%= turbo_frame_tag dom_id(post) do %>
-	<div id="<%= dom_id post %>">
-		<div class="blog-author">
-			<div class="row">
-				<div class="col-auto">
-					<span class="text-start"><%= post.user.email %></span>
-				</div>
-				<div class="col-auto text-start">
-					<span class=""><%= post.created_at.strftime("%b %d") %></span>
-					<%# .strftime("%d %b %y") %>
-				</div>
-				<div class="col-auto text-start">
-					<span class="">Member only</span>
-					<%# .strftime("%d %b %y") %>
-				</div>
-			</div>
-		</div>
-		<div class="blog-title">
-			<div class="row">
-				<div class="col-12">
-					<h3><%= post.title %></h3>
-				</div>
-			</div>
-		</div>
-		<div class="blog-content">
-			<div class="row">
-				<div class="col-8 h-100">
-					<%= post.content.to_plain_text.truncate(400) %>
-				</div>
-				<div class="col-4">
-					<% blob = post.content.embeds.first.blob %>
-					<div class="container-fluid">
-						<% if blob.representable? %>
-							<%= image_tag blob.representation(
-                        resize_to_fill: local_assigns[:in_gallery] ? [200, 200, gravity: 'Center'] : [ 400, 300 ]),
-                        { class: "img-fluid rounded-start rounded-3", alt: "blog-image", } %>
-						<% end %>
+	<div id="<%= dom_id post %>" class="container" style="height: 15rem;">
+		<div class="row-1">
+			<div class="col-12">
+				<div class="blog-author d-flex ">
+					<div class="">
+						<span class="text-start"><%= post.user.email %></span>
+					</div>
+					<div class="text-start">
+						<span class=""><%= post.created_at.strftime("%b %d") %></span>
+						<%# .strftime("%d %b %y") %>
+					</div>
+					<div class="col-auto text-start">
+						<span class="">Member only</span>
+						<%# .strftime("%d %b %y") %>
 					</div>
 				</div>
 			</div>
 		</div>
-		<%# post.content %>
+		<div class="row" style="height: 10rem;">
+			<div class="col-sm-12 col-md-8 col-lg-8 bg-info h-100">
+				<div class="blog-title">
+					<h3><%= post.title %></h3>
+				</div>
+				<div class='blog-content'>
+					<p class=""><%= post.content.to_plain_text.truncate(200) %></p>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-4 col-lg-4 h-100 h-100">
+				<% blob = post.content.embeds.first.blob %>
+				<div class="container-fluid mx-auto">
+					<% if blob.representable? %>
+						<%= image_tag blob.representation(resize_to_fill: local_assigns[:in_gallery] ? [800, 600] : [ 300, 155 ]),
+                        { class: "img-fluid", alt: "blog-image", } %>
+					<% end %>
+				</div>
+			</div>
+			<div>
+				<div class="col-12 d-flex">
+					<div class=" bg-light ">
+						<p><%= "Programming" %></p>
+					</div>
+					<div class="">
+						<p><%= "#{rand(1..30).to_s} min read"  %></p>
+					</div>
+					<div>
+						<p><%= "Selected for you"  %></p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 <% end %>
