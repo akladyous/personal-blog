@@ -1,21 +1,23 @@
 <%= turbo_frame_tag dom_id(post) do %>
 	<div id="<%= dom_id post %>" class="container" style="height: 15rem;">
-		<div class="row-1">
-			<div class="col-12">
-				<div class="blog-author d-flex ">
-					<div class="">
-						<span class="text-start"><%= post.user.email %></span>
+		<div class="row">
+			<div class="col-sm-12 col-md-8 col-lg-8">
+				<div class="blog-author position-relative">
+					<div class="d-inline-block">
+						<p class="mb-0"><%= post.user.email %></p>
 					</div>
-					<div class="text-start">
-						<span class=""><%= post.created_at.strftime("%b %d") %></span>
-						<%# .strftime("%d %b %y") %>
+					<div class="d-inline-block px-1">
+						<p class="mb-0"><%= post.created_at.strftime("%b %d") %></p>
 					</div>
-					<div class="col-auto text-start">
-						<span class="">Member only</span>
-						<%# .strftime("%d %b %y") %>
+					<div class="d-inline-block px-1">
+						<p class="mb-0">Member only</p>
+					</div>
+					<div class="d-inline-block top-0 end-0 position-absolute">
+						<%= render 'post_options', post: post %>
 					</div>
 				</div>
 			</div>
+			<div class="col-sm-12 col-md-4 col-lg-4 h-100 h-100"></div>
 		</div>
 		<div class="row" style="height: 10rem;">
 			<div class="col-sm-12 col-md-8 col-lg-8 bg-info h-100">
@@ -23,14 +25,16 @@
 					<h3><%= post.title %></h3>
 				</div>
 				<div class='blog-content'>
-					<p class=""><%= post.content.to_plain_text.truncate(200) %></p>
+					<p class=""><%= post.content.to_plain_text.strip.truncate(200) %></p>
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-4 col-lg-4 h-100 h-100">
-				<% blob = post.content.embeds.first.blob %>
+				<%# @blob = post.content.embeds.first.blob %>
+				<% @blob = post.content.body.attachments.first %>
 				<div class="container-fluid mx-auto">
-					<% if blob.representable? %>
-						<%= image_tag blob.representation(resize_to_fill: local_assigns[:in_gallery] ? [800, 600] : [ 300, 155 ]),
+					<%# if @blob.representable? %>
+					<% if @blob %>
+						<%= image_tag @blob.representation(resize_to_fill: local_assigns[:in_gallery] ? [800, 600] : [ 300, 155 ]),
                         { class: "img-fluid", alt: "blog-image", } %>
 					<% end %>
 				</div>

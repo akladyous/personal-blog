@@ -1,5 +1,10 @@
 /********** Template CSS **********/
-
+.dropdown-toggle:after {
+    content: none;
+}
+.button_to > button {
+    all: initial;
+}
 .navbar {
     padding: 5px 25px !important;
     height: 70px;
