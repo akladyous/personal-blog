@@ -2,7 +2,7 @@
 	<div id="<%= dom_id post %>" class="container" style="height: 15rem;">
 		<div class="row">
 			<div class="col-sm-12 col-md-8 col-lg-8">
-				<div class="blog-author position-relative">
+				<div class="position-relative">
 					<div class="d-inline-block">
 						<p class="mb-0"><%= post.user.email %></p>
 					</div>
@@ -13,7 +13,7 @@
 						<p class="mb-0">Member only</p>
 					</div>
 					<div class="d-inline-block top-0 end-0 position-absolute">
-						<%= render 'post_options', post: post %>
+						<%= render 'post_links', post: post %>
 					</div>
 				</div>
 			</div>

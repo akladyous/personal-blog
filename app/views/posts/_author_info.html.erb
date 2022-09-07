@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-sm-12 col-md-8 col-lg-8">
+		<div class="blog-author position-relative">
+			<div class="d-inline-block">
+				<p class="mb-0"><%= post.user.email %></p>
+			</div>
+			<div class="d-inline-block px-1">
+				<p class="mb-0"><%= post.created_at.strftime("%b %d") %></p>
+			</div>
+			<div class="d-inline-block px-1">
+				<p class="mb-0">Member only</p>
+			</div>
+			<div class="d-inline-block top-0 end-0 position-absolute">
+				<%= render 'post_links', post: post %>
+			</div>
+		</div>
+	</div>

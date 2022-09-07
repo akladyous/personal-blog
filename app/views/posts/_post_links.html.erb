@@ -5,7 +5,7 @@
 	</button>
 	<ul class="dropdown-menu">
 		<li><%= link_to "Open", post, class: "dropdown-item", target: '_top' %></li>
-		<li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item", data: { turbo_frame: dom_id(post)} %></li>
+		<li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item", data: { turbo_frame: "edit_post#{dom_id(post)}"}, target: '_top' %></li>
 		<li><a class="dropdown-item" href="#">Pin</a></li>
 		<li><hr class="dropdown-divider"></li>
 		<li><a class="dropdown-item" href="#">Another action</a></li>

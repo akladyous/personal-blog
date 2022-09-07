@@ -1,4 +1,4 @@
-<%= turbo_frame_tag @post do %>
+<%= turbo_frame_tag "edit_post#{dom_id(@post)}" do %>
 	<%= render "form", post: @post %>
 <% end %>
 <%# <div></div> %>
