@@ -103,6 +103,8 @@ GEM
     digest (3.1.0)
     e2mmap (0.1.0)
     erubi (1.11.0)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -294,6 +296,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.8, >= 4.8.1)
+  faker (~> 2.23)
   htmlbeautifier
   image_processing (~> 1.2)
   jbuilder
@@ -315,4 +318,4 @@ RUBY VERSION
    ruby 3.0.0p0
 
 BUNDLED WITH
-   2.3.21
+   2.3.22

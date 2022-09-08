@@ -4,6 +4,9 @@
 }
 .button_to > button {
     all: initial;
+    display: block;
+    padding: 4px 16px;
+    font-family: inherit;
 }
 .navbar {
     padding: 5px 25px !important;

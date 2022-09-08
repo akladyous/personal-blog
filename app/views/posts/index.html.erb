@@ -1,6 +1,6 @@
 <% content_for(:title, "Posts home page") %>
 <div id="posts">
-	<%# turbo_frame_tag "public_posts" do %>
+	<%= turbo_frame_tag "public_posts" do %>
 		<% @posts.each do |post| %>
 			<%# turbo_frame_tag dom_id(post), src: post_path(post) %>
 			<% if post.content.embeds.attached? %>
@@ -9,16 +9,16 @@
 		<% end %>
 		<%# render 'post_preview', post: post %>
 		<%# link_to "Show this post", post %>
-		<%# end %>
-	</div>
-	<%# link_to "New post", new_post_path %>
-	<%= console %>
-	<%# p1.rich_text_content.embeds.joins(:blob).find_by("active_storage_blobs.content_type ~* '^image'")
+	<% end %>
+</div>
+<%= link_to "New post", new_post_path %>
+<%= console %>
+<%# p1.rich_text_content.embeds.joins(:blob).find_by("active_storage_blobs.content_type ~* '^image'")
 p1.content.embeds.attachments.first
 p1.content.body.attachments
 p1.content.embeds.attached?
 p1.content.body.attachables %>
-	<%# p1.content.to_plain_text.strip
+<%# p1.content.to_plain_text.strip
 Post.joins(:action_text_rich_text).where("action_text_rich_text.embeds.attached?", true)
 Post.joins(:action_text_rich_text).where("action_text_rich_text.content.blank?", false)
 
@@ -26,6 +26,6 @@ Post.joins(:rich_text_content) do |rec|
   binding.irb
   puts rec.content.body.blank?
 end %>
-	<%# Post.find_each(batch_size: 100) do |post|
+<%# Post.find_each(batch_size: 100) do |post|
     post.content.embeds.attached?
 end %>
