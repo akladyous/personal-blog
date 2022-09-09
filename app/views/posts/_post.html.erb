@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id post do %>
+<%= turbo_frame_tag dom_id @post do %>
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
@@ -28,9 +28,7 @@
 		</div>
 		<div class="row py-2">
 			<div class="col-6 d-flex justify-content-start align-items-center">
-				<div class="post-like d-flex align-items-center">
-					<%= render 'like' %>
-				</div>
+				<%= turbo_frame_tag post_like_path(@post).parameterize, src: post_like_path(@post) %>
 				<div class="post-comment px-3">
 					<i class="bi bi-chat-left"></i>
 				</div>
@@ -46,4 +44,3 @@
 		</div>
 	</div>
 <% end %>
-<%= console %>

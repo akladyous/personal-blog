@@ -1,0 +1,18 @@
+<%= turbo_frame_tag post_like_path(@post).parameterize do %>
+	<div class="post-like d-flex align-items-center">
+		<% if user_signed_in? && !@post.belongs_to?(current_user)  %>
+			<% unless current_user.likes? @post %>
+				<%= button_to post_like_path(@post), method: :post, form: { data: { turbo_frame: post_like_path(@post).parameterize} } do %>
+					<i class="bi bi-heart "></i>
+				<% end %>
+			<% else %>
+				<%= button_to post_like_path(@post), method: :delete, form: { data: {turbo_frame: post_like_path(@post).parameterize }} do %>
+					<i class="bi bi-heart-fill text-danger"></i>
+				<% end %>
+			<% end %>
+		<% else %>
+			<i class="bi bi-heart "></i>
+		<% end %>
+		<p class="my-0 px-2"><%= @post.likes.count  %></p>
+	</div>
+<% end %>

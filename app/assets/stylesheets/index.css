@@ -11,13 +11,13 @@
 /* -------------------------- */
 .side-area {
     height: 600px;
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+    width: 100%;
 }
 .side-area-bg {
     height: 100%;
     background-image: url("blog_wordcloud.png");
-    object-fit: cover;
+    object-fit: fill;
+    background-repeat: no-repeat;
 }
 /* -------------------------- */
 .post-info {

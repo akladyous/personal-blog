@@ -5,3 +5,4 @@ import * as bootstrap from "bootstrap"
 import "trix"
 import "@rails/actiontext"
 import './utilities/color_picker.js'
+
