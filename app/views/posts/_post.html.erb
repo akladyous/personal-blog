@@ -1,9 +1,9 @@
 <%= turbo_frame_tag dom_id post do %>
-	<div>
+	<div class="container">
 		<div class="row">
 			<div class="col-8">
 				<div class="d-inline-block">
-					<span><%= post.user.full_name %></span>
+					<span><%= @post.user.full_name %></span>
 				</div>
 				<div class="d-inline-block">
 					<span><%= "5 min read" %></span>
@@ -22,7 +22,28 @@
 		</div>
 		<div class="row">
 			<h1><%= post.title %></h1>
+		</div>
+		<div class="row">
 			<%= post.content %>
+		</div>
+		<div class="row py-2">
+			<div class="col-6 d-flex justify-content-start align-items-center">
+				<div class="post-like d-flex align-items-center">
+					<%= render 'like' %>
+				</div>
+				<div class="post-comment px-3">
+					<i class="bi bi-chat-left"></i>
+				</div>
+			</div>
+			<div class="col-6 d-flex justify-content-end align-items-center">
+				<div class="post-share">
+					<i class="bi bi-share"></i>
+				</div>
+				<div class="post-save px-3">
+					<i class="bi bi-box-arrow-up"></i>
+				</div>
+			</div>
 		</div>
 	</div>
 <% end %>
+<%= console %>

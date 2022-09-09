@@ -2,17 +2,17 @@
 	<div id="<%= dom_id post %>" class="container" style="height: 15rem;">
 		<div class="row">
 			<div class="col-sm-12 col-md-8 col-lg-8">
-				<div class="position-relative">
+				<div class="post-info position-relative d-flex align-items-center my-1">
 					<div class="d-inline-block">
-						<p class="mb-0"><%= post.user.email %></p>
+						<p class="mb-0"><%= post.user.full_name %></p>
 					</div>
-					<div class="d-inline-block px-1">
+					<div class="d-inline-block">
 						<p class="mb-0"><%= post.created_at.strftime("%b %d") %></p>
 					</div>
-					<div class="d-inline-block px-1">
+					<div class="d-inline-block">
 						<p class="mb-0">Member only</p>
 					</div>
-					<div class="d-inline-block top-0 end-0 position-absolute">
+					<div class="d-inline-block end-0 position-absolute">
 						<%= render 'post_links', post: post %>
 					</div>
 				</div>
@@ -39,17 +39,22 @@
 					<% end %>
 				</div>
 			</div>
-			<div>
-				<div class="col-12 d-flex">
-					<div class=" bg-light ">
-						<p><%= "Programming" %></p>
-					</div>
-					<div class="">
-						<p><%= "#{rand(1..30).to_s} min read"  %></p>
-					</div>
-					<div>
-						<p><%= "Selected for you"  %></p>
-					</div>
+		</div>
+		<div class="row">
+			<div class="post-info d-flex align-items-center my-1">
+				<div class="post-srv tag rounded-3">
+					<p align-items-center><%= "Programming" %></p>
+				</div>
+				<div class="post-srv">
+					<p><%= "#{rand(1..30).to_s} min read"  %></p>
+				</div>
+				<div class="post-srv">
+					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
+						<path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+					</svg>
+				</div>
+				<div class="post-srv">
+					<p><%= "Selected for you"  %></p>
 				</div>
 			</div>
 		</div>

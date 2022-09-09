@@ -11,4 +11,13 @@ class Post < ApplicationRecord
       errors.add(:content, "Can't be blank")
     end
   end
+
+
+  def belongs_to?(user)
+    self.user.id == user.id
+  end
+
+  def likes_to?
+    self.likes.where(user_id: current_user.id).any?
+  end
 end

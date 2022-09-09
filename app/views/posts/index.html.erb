@@ -12,7 +12,8 @@
 	<% end %>
 </div>
 <%= link_to "New post", new_post_path %>
-<%= console %>
+<%# console %>
+<%#  %>
 <%# p1.rich_text_content.embeds.joins(:blob).find_by("active_storage_blobs.content_type ~* '^image'")
 p1.content.embeds.attachments.first
 p1.content.body.attachments

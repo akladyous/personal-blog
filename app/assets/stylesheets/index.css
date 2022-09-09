@@ -1,4 +1,14 @@
 /********** Template CSS **********/
+.button_to {
+    margin: 0;
+}
+.button_to > button {
+    all: initial;
+    display: block;
+    padding: 5;
+    font-family: inherit;
+}
+/* -------------------------- */
 .side-area {
     height: 600px;
     background-size: 100% 100%;
@@ -9,16 +19,27 @@
     background-image: url("blog_wordcloud.png");
     object-fit: cover;
 }
+/* -------------------------- */
+.post-info {
+    height: 1.5rem;
+}
+.post-info > div:not(:first-child) {
+    padding-inline: 8px;
+}
+.post-info div p,
+button {
+    margin-bottom: 0;
+}
+.post-srv.tag {
+    background-color: #e9ecef;
+    padding-inline: 10px;
+}
 
+/* -------------------------- */
 .dropdown-toggle:after {
     content: none;
 }
-.button_to > button {
-    all: initial;
-    display: block;
-    padding: 4px 16px;
-    font-family: inherit;
-}
+
 .navbar {
     padding: 5px 25px !important;
     height: 70px;
