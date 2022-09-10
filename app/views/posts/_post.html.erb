@@ -1,45 +1,69 @@
 <%= turbo_frame_tag dom_id @post do %>
-	<div class="container">
-		<div class="row">
-			<div class="col-8">
-				<div class="d-inline-block">
-					<span><%= @post.user.full_name %></span>
-				</div>
-				<div class="d-inline-block">
-					<span><%= "5 min read" %></span>
-				</div>
-				<div class="d-inline-block">
-					<span><%= "Listen" %></span>
-				</div>
+	<div class="row mx-0">
+		<div class="col-sm-12 col-md-1 col-lg-1 px-0">
+			<div class="d-flex flex-md-column flex-lg-column flex-md-shrink-1">
+				<div>one</div>
+				<div>two</div>
+				<div>trhee</div>
+				<div>four</div>
+				<div>five</div>
 			</div>
-			<div class="col-4">
-				<div class="d-flex justify-content-end">
-					<div class="">
-						<%= render 'post_links', post: post %>
+		</div>
+		<div class="col-sm-12 col-md-8 col-lg-8 pax-0">
+			<div class="container">
+				<div class="row">
+					<div class="col-8">
+						<div class="d-inline-block">
+							<span><%= @post.user.full_name %></span>
+						</div>
+						<div class="d-inline-block">
+							<span><%= "5 min read" %></span>
+						</div>
+						<div class="d-inline-block">
+							<span><%= "Listen" %></span>
+						</div>
+					</div>
+					<div class="col-4">
+						<div class="d-flex justify-content-end">
+							<div class="">
+								<i class="mx-1 bi-twitter"></i>
+								<i class="mx-1 bi-facebook"></i>
+								<i class="mx-1 bi-linkedin"></i>
+								<i class="mx-1 bi bi-link"></i>
+								<%= render 'post_links', post: post %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<h1><%= post.title %></h1>
+				</div>
+				<div class="row">
+					<%= post.content %>
+				</div>
+				<div class="row py-2">
+					<div class="col-6 d-flex justify-content-start align-items-center">
+						<%= turbo_frame_tag post_like_path(@post).parameterize, src: post_like_path(@post) %>
+						<div class="post-comment px-3">
+							<i class="bi bi-chat-left"></i>
+						</div>
+					</div>
+					<div class="col-6 d-flex justify-content-end align-items-center">
+						<div class="post-share">
+							<i class="bi bi-share"></i>
+						</div>
+						<div class="post-save px-3">
+							<i class="bi bi-box-arrow-up"></i>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="row">
-			<h1><%= post.title %></h1>
-		</div>
-		<div class="row">
-			<%= post.content %>
-		</div>
-		<div class="row py-2">
-			<div class="col-6 d-flex justify-content-start align-items-center">
-				<%= turbo_frame_tag post_like_path(@post).parameterize, src: post_like_path(@post) %>
-				<div class="post-comment px-3">
-					<i class="bi bi-chat-left"></i>
-				</div>
-			</div>
-			<div class="col-6 d-flex justify-content-end align-items-center">
-				<div class="post-share">
-					<i class="bi bi-share"></i>
-				</div>
-				<div class="post-save px-3">
-					<i class="bi bi-box-arrow-up"></i>
-				</div>
+		<div class="col-sm-12 col-md-3 col-lg-3 pax-0">
+			<div class="form-group">
+				<label for="query" class="form-label"></label>
+				<input type="text" name="query" class="form-control">
+				<button class="btn btn-light d-block mx-auto w-100 mt-2">search</button>
 			</div>
 		</div>
 	</div>
