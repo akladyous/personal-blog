@@ -1,0 +1,14 @@
+<%= content_tag :div, nil, { class: "image-container",
+    data: { controller: 'image-loader', image_loader_target: 'image_container'  } } do %>
+	<% if resource.avatar.attached? %>
+		<%= image_tag  resource.avatar.representation(resize_to_fill: [85, 85]), {
+            size: '85x85', class: "rounded-circle mx-auto d-block", alt: "user-avatar",
+            data: {action: 'click->image-loader#triggerUpload',  image_loader_target: 'output' } } %>
+	<% else %>
+		<%= image_tag "avatar.jpeg", {
+            size: '85x85', class: "rounded-circle mx-auto d-block", alt: "user-avatar",
+            data: {action: 'click->image-loader#triggerUpload',  image_loader_target: 'output' } } %>
+	<% end %>
+	<%= form.file_field :avatar, { class: 'image-fluid d-none', multiple: false, direct_upload: false,
+            data: { image_loader_target: 'input', action: "image-loader#handleChange"} } %>
+<% end %>
