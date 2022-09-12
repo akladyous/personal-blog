@@ -25,7 +25,19 @@
 		</div>
 		<div class="navbar-nav gap-3">
 			<% if user_signed_in? %>
-				<%= link_to current_user.email, edit_user_registration_path, class: 'current-user' %>
+				<div class="position-relative">
+					<%= link_to edit_user_registration_path, class: 'current-user' do %>
+						<% if current_user.avatar.attached? %>
+							<%= image_tag  current_user.avatar.representation(resize_to_fill: [35, 35]) , { class: "rounded-circle", alt: "user-avatar", } %>
+							<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mx-1">
+								23+
+								<span class="visually-hidden">unread messages</span>
+							</span>
+						<% else %>
+							<%= current_user.email %>
+						<% end %>
+					</div>
+				<% end %>
 				<%= button_to "Logout", destroy_user_session_path, class: "dropdown-item #{user_signed_in? ? '' : 'disabled'}", method: :delete %>
 			<% else %>
 				<%= link_to 'Signup', new_user_registration_path, { class: "nav-link"  } %>
