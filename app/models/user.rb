@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  # include ActionText::Attachable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
 
@@ -30,7 +31,8 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
+  # delegate :likes?, to: :posts
   def likes?(post)
-    post.likes.where(user_id: id).any?
+    likes.where(post_id: post.id).any?
   end
 end

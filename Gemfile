@@ -80,4 +80,5 @@ group :development, :test do
   gem 'htmlbeautifier'
   gem 'solargraph', '~> 0.45.0'
   gem 'solargraph-rails', '~> 0.3.1'
+  gem 'ruby-progressbar', '~> 1.8', '>= 1.8.1'
 end

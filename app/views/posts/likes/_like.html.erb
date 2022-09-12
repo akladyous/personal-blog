@@ -1,18 +1,26 @@
-<%= turbo_frame_tag post_like_path(@post).parameterize do %>
-	<div class="post-like d-flex align-items-center">
-		<% if user_signed_in? && !@post.belongs_to?(current_user)  %>
-			<% unless current_user.likes? @post %>
-				<%= button_to post_like_path(@post), method: :post, form: { data: { turbo_frame: post_like_path(@post).parameterize} } do %>
-					<i class="bi bi-heart "></i>
-				<% end %>
-			<% else %>
-				<%= button_to post_like_path(@post), method: :delete, form: { data: {turbo_frame: post_like_path(@post).parameterize }} do %>
-					<i class="bi bi-heart-fill text-danger"></i>
-				<% end %>
-			<% end %>
-		<% else %>
-			<i class="bi bi-heart "></i>
+<% @like_button = capture  do %>
+	<% if user_signed_in? && !@post.belongs_to?(current_user) %>
+		<%= button_to post_like_path(@post),
+            method: current_user.likes?(@post) ? :delete : :post,
+            form: { data: { turbo_frame: post_like_path(@post).parameterize} } do %>
+			<i class="bi bi-heart fs-5"></i>
 		<% end %>
-		<p class="my-0 px-2"><%= @post.likes.count  %></p>
+	<% else %>
+		<i class="bi bi-heart mx-1 fs-5"></i>
+	<% end %>
+<% end %>
+<%= turbo_frame_tag post_like_path(@post).parameterize do %>
+	<div class="post-likes d-flex align-items-center">
+		<div class="likes-avatars">
+			<% @post.likes.each do |like| %>
+				<span class="like-avatar">
+					<%= image_tag  like.user.avatar.representation(resize_to_fill: [30, 30]) , { class: "avatars", alt: "post-image", } %>
+				</span>
+			<% end %>
+		</div>
+		<div class="d-flex align-items-center position-relative">
+			<%= @like_button %>
+			<span class="likes-count top-0 start-100 translate-middle badge rounded-pill bg-transparent text-black"><%= @post.likes.count  %></span>
+		</div>
 	</div>
 <% end %>

@@ -1,4 +1,24 @@
 /********** Template CSS **********/
+.like-avatar img {
+    border-radius: 50%;
+    position: relative;
+    left: -5px;
+    margin-left: -15px;
+    z-index: 1;
+    border: 2px solid white;
+}
+
+.likes-avatars {
+    /* direction: rtl; */
+    text-align: left;
+    padding-left: 1rem;
+    position: relative;
+}
+.likes_count {
+    position: absolute;
+    /* font-size: small; */
+}
+/* ------------------- */
 .button_to {
     margin: 0;
 }
