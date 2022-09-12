@@ -15,7 +15,17 @@ class User < ApplicationRecord
   has_many :followers, through: :followed_users, source: :follower
 
   def follow(friend)
-    # Friendship.find_or_create_by(follower_id: self.id, followed_id: friend.id)
+    Friendship.find_or_create_by(follower_id: self.id, followed_id: friend.id)
+  end
+  def unfollow(user)
+    Friendship.where(follower_id: self.id, followed_id: user.id).destroy_all
+  end
+
+  def is_following?(user)
+    self.following&.include?(user)
+  end
+
+  def request_friend(friend)
     unless self == friend || Friendship.where(follower_id: self.id, followed_id: friend.id).exists?
       transaction do
         Friendship.create(follower: self, followed: friend, status: :pending)
@@ -23,7 +33,6 @@ class User < ApplicationRecord
       end
     end
   end
-
   def accept_friend(friend)
     transaction do
       Friendship.find_by(follower: self, followed: friend, status: [:requested])&.accepted!
@@ -39,16 +48,6 @@ class User < ApplicationRecord
   end
 
 
-  def unfollow(user)
-    # Friendship.where(follower_id: self.id, followed_id: user.id).destroy_all
-    transaction do
-
-    end
-  end
-
-  def is_following?(user)
-    self.following&.include?(user)
-  end
   def full_name
     "#{first_name.capitalize} #{last_name.capitalize}"
   end
