@@ -304,6 +304,7 @@ DEPENDENCIES
   pg (~> 1.4, >= 1.4.3)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
+  ruby-progressbar (~> 1.8, >= 1.8.1)
   selenium-webdriver
   solargraph (~> 0.45.0)
   solargraph-rails (~> 0.3.1)

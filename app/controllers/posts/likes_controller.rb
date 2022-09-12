@@ -1,5 +1,6 @@
 class Posts::LikesController < ApplicationController
   before_action :set_post
+  skip_before_action :authenticate_user!
 
   def show
     @likes = @post.likes.count

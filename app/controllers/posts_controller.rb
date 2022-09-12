@@ -3,7 +3,9 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
+    # @posts = Post.where.not(user_id: current_user.id).order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
+    # @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
   end
 
   def show
