@@ -76,7 +76,10 @@
 						<p class="my-0 fs-6 fw-semibold"><%= @post.user.full_name %></p>
 					</div>
 					<div class="followers_count">
-						<p class="my-0 fs-6 fw-light">19 followers</p>
+						<p class="my-0 fs-6 fw-light">
+							<%= @post.user.followers.count %>
+							<span>Followers</span>
+						</p>
 					</div>
 					<div class="my-3">
 						<button>follow</button>
@@ -92,4 +95,4 @@
 		</div>
 	</div>
 <% end %>
-<%# console %>
+<%= console %>
