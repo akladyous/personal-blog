@@ -14,14 +14,36 @@ class User < ApplicationRecord
   has_many :followed_users, class_name: 'Friendship', foreign_key: :followed_id, dependent: :destroy
   has_many :followers, through: :followed_users, source: :follower
 
-  def follow(user)
-    Friendship.find_or_create_by(follower_id: self.id, followed_id: user.id)
-    # following_users.create(followed_id: user.id)
+  def follow(friend)
+    # Friendship.find_or_create_by(follower_id: self.id, followed_id: friend.id)
+    unless self == friend || Friendship.where(follower_id: self.id, followed_id: friend.id).exists?
+      transaction do
+        Friendship.create(follower: self, followed: friend, status: :pending)
+        Friendship.create(follower: friend, followed: self, status: :requested)
+      end
+    end
   end
 
+  def accept_friend(friend)
+    transaction do
+      Friendship.find_by(follower: self, followed: friend, status: [:requested])&.accepted!
+      Friendship.find_by(follower: friend, followed: self, status: [:pending])&.accepted!
+    end
+  end
+
+  def reject_friend(friend)
+    transaction do
+      Friendship.find_by(follower: self, followed: friend)&.destroy!
+      Friendship.find_by(follower: friend, followed: self)&.destroy!
+    end
+  end
+
+
   def unfollow(user)
-    Friendship.where(follower_id: self.id, followed_id: user.id).destroy_all
-    # current_user.following_users.where(followed_id: user.id)
+    # Friendship.where(follower_id: self.id, followed_id: user.id).destroy_all
+    transaction do
+
+    end
   end
 
   def is_following?(user)
