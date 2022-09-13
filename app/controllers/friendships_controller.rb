@@ -1,4 +1,7 @@
 class FriendshipsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_friend
+
   def new
   end
 
@@ -7,4 +10,11 @@ class FriendshipsController < ApplicationController
 
   def destroy
   end
+
+  private
+  def set_friend
+    @friend = User.find(params[:id])
+  end
 end
+
+
