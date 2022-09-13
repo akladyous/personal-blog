@@ -16,8 +16,15 @@
 }
 .likes_count {
     position: absolute;
-    /* font-size: small; */
 }
+/* ------------------- */
+.tooltip-inner {
+    background-color: white;
+    color: black;
+    box-shadow: 0px 0px 4px black;
+    opacity: 1 !important;
+}
+
 /* ------------------- */
 .button_to {
     margin: 0;

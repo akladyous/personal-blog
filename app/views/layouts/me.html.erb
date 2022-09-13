@@ -1,0 +1,8 @@
+<% content_for :content do %>
+	<%= render 'title' %>
+	<div class="container-fluid post-main-page">
+		<%= render 'flash' %>
+		<%= yield %>
+	</div>
+<% end %>
+<%= render template: "layouts/application" %>

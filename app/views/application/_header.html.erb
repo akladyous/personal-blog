@@ -29,7 +29,7 @@
 					<%= link_to edit_user_registration_path, class: 'current-user' do %>
 						<% if current_user.avatar.attached? %>
 							<%= image_tag  current_user.avatar.representation(resize_to_fill: [35, 35]) , { class: "rounded-circle", alt: "user-avatar", } %>
-							<%= link_to root_path do %>
+							<%= link_to me_path(current_user), class: "user-notification", data: {bs_toggle: 'tooltip', bs_placement: 'bottom', bs_title: 'notifications'}  do %>
 								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger mx-1">
 									23+
 									<span class="visually-hidden">unread messages</span>
