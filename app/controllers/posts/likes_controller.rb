@@ -1,10 +1,8 @@
 class Posts::LikesController < ApplicationController
-  before_action :set_post
   skip_before_action :authenticate_user!
+  before_action :set_post
 
   def show
-    @likes = @post.likes.order(:created_at => :desc).limit(6)
-    @likes_count = @post.likes.count
   end
 
   def create
@@ -27,5 +25,4 @@ class Posts::LikesController < ApplicationController
   def set_post
     @post = Post.find(params[:post_id])
   end
-
 end
