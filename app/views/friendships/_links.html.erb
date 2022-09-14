@@ -1,14 +1,13 @@
 <%= content_tag :div, nil, class: 'links'  do %>
-	<%= link_to 'Follow',
-        [:new, :friendship, id: user] unless
+	<%= link_to 'Follow', [:new, :friendship, id: user] unless
         current_user.has_friendship_with?(user) %>
-	<%= link_to 'Accept Friend',
-        [:friendships, id: user],
+	<%= link_to 'Accept Friend', [:friendships, id: user],
         data: {turbo_method: :post} if current_user.pending_friends_with?(user) %>
-	<%= link_to 'Unfollow',
-        [:friendships, id: user],
+	<%= button_to 'Reject Follower', friendship_path(user.id),
         method: :delete if current_user.pending_friends_with?(user) %>
-	<%= button_to 'Unfollow',
-        friendship_path(user.id), method: :delete,
+	<%= button_to 'Unfollow', friendship_path(user.id), method: :delete,
         form: {data: {turbo_confirm: 'Are you sure?'}} if current_user.friends_with?(user) %>
+	<% if current_user.requested_friends_with?(user) %>
+		<%= "Pending request #{time_ago_in_words(current_user.followed_users.first.created_at)} ago" %>
+	<% end %>
 <% end %>
