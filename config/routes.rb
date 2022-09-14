@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts do
     resource :like, module: :posts, only: [:show, :create, :destroy]
+    resources :tags
   end
   resources :friendships, only: [:show, :new, :create, :destroy, :update]
   resources :me, only: :show
