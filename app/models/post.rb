@@ -15,15 +15,4 @@ class Post < ApplicationRecord
   def belongs_to?(user)
     self.user.id == user.id
   end
-
-  # def likes_to?(user)
-  #   user ||= current_user
-  #   likes.where(user_id: user.id).any?
-  # end
-
-  # def likes?(user)
-  #   user ||= current_user
-  #   likes.where(user_id: user.id).any?
-  # end
-
 end

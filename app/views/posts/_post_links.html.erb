@@ -5,15 +5,17 @@
 	</button>
 	<ul class="dropdown-menu">
 		<li><%= link_to "Open", post, class: "dropdown-item", target: '_top'%></li>
-		<li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item", data: { turbo_frame: dom_id(post)}, target: '_top' %></li>
-		<li><a class="dropdown-item" href="#">Pin</a></li>
+		<li><%= link_to "Edit", edit_post_path(post), class: "dropdown-item", data: { turbo_frame: dom_id(post)}, target: '_top' if post.belongs_to? current_user %></li>
+		<% if post.belongs_to? current_user %>
+			<li><a class="dropdown-item" href="#">Pin</a></li>
+		<% end %>
 		<li><hr class="dropdown-divider"></li>
 		<li><a class="dropdown-item" href="#">Another action</a></li>
 		<li><a class="dropdown-item" href="#">Something else here</a></li>
 		<li><a class="dropdown-item" href="#">Separated link</a></li>
 		<li><hr class="dropdown-divider"></li>
 		<li><%= button_to "Delete", posts_path, method: :delete, class: "dropdown-item",
-                form: { data: { turbo_frame: '_top'} } %>
+                form: { data: { turbo_frame: '_top'} } if post.belongs_to? current_user %>
 		</li>
 	</ul>
 </div>
