@@ -2,10 +2,13 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[index show]
 
+  include ActionView::Helpers::UrlHelper
   def index
-    @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
-    # @posts = Post.where.not(user_id: current_user.id).order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
-    # @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
+    if current_page?(user_posts_path(current_user))
+      @posts = current_user.posts.order(:created_at => :desc).with_rich_text_content_and_embeds
+    else
+      @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
+    end
   end
 
   def show
