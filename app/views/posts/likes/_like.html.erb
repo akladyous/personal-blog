@@ -12,7 +12,7 @@
 <%= turbo_frame_tag post_like_path(@post).parameterize do %>
 	<div class="post-likes d-flex align-items-center">
 		<div class="likes-avatars">
-			<% @post.likes.each do |like| %>
+			<% @likes.each do |like| %>
 				<span class="like-avatar">
 					<%= image_tag  like.user.avatar.representation(resize_to_fill: [30, 30]) , { class: "avatars", alt: "post-image", } %>
 				</span>
@@ -20,7 +20,7 @@
 		</div>
 		<div class="d-flex align-items-center position-relative">
 			<%= @like_button %>
-			<span class="likes-count top-0 start-100 translate-middle badge rounded-pill bg-transparent text-black"><%= @post.likes.count  %></span>
+			<span class="likes-count top-0 start-100 translate-middle badge rounded-pill bg-transparent text-black"><%= @likes_count %></span>
 		</div>
 	</div>
 <% end %>
