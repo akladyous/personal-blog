@@ -54,11 +54,12 @@ User.all.each do |user|
 end
 
 tag_progress = ProgressBar.create(title: 'Creating Likes', total: Post.count*5 )
+words = Faker::Lorem.unique.words(number: 30)
 Post.all.each do |post|
   total_tags = rand(2..5)
-  1.upto(total_tags) do
-    name = proc { Faker::Lorem.unique.words(number: 1).first }
-    post.tags.create(name: name.call)
+  sample_tags = words.sample(total_tags)
+  sample_tags.each do |tag|
+    post.tags.create(name: tag)
   end
 end
 
@@ -67,6 +68,7 @@ end
 =begin
 image = File.open("app/assets/images/blogs/#{idx+1}.jpeg")
 blob = ActiveStorage::Blob.create_and_upload!(io: File.open('path/to/a/file'), filename: 'filename')
+content.append_attachables(blob)
 attachment = ActionText::Attachment.from_attachable(blob)
 p3 = u1.posts.create!(content: "<div>Sample content with attachment</div><div>#{attachment.to_html}</div>")
 =end

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :posts do
     resource :like, controller: 'posts/likes', only: [:show, :create, :destroy]
     resources :tags, controller: 'posts/tags'
+    resources :related, controller: 'posts/related', only: :index
   end
   resources :friendships, only: [:show, :new, :create, :destroy, :update]
   resources :me, only: :show

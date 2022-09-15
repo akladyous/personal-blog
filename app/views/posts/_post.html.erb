@@ -89,6 +89,10 @@
 						<p class="my-0 fw-bold text-start">Related Topics</p>
 						<%= turbo_frame_tag post_tags_path(@post).parameterize, src: post_tags_path(@post) %>
 					</div>
+					<div class="related-posts">
+						<p class="my-0 fw-bold text-start">Related Posts</p>
+						<%= turbo_frame_tag post_related_index_path(@post).parameterize, src: post_related_index_path(@post) %>
+					</div>
 				</div>
 			</div>
 		</div>
