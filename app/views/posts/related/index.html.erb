@@ -1,20 +1,22 @@
 <%= turbo_frame_tag post_related_index_path(@post).parameterize do %>
 	<% @related_posts.each do |post| %>
-		<div class="row">
-			<div class="col-12">
-				<div class="d-flex justify-content-between align-items-center my-2">
-					<div>
-						<p class="my-0 fs-6"><%= post.title %></p>
-					</div>
-					<div>
-						<% @blob = post.content.body.attachments.first %>
-						<% if @blob %>
-							<%= image_tag @blob.representation(resize_to_fill: [50, 50]),
+		<%= link_to post, {target: '_top', class: "link-to", id: "link-to-post" } do %>
+			<div class="row">
+				<div class="col-12">
+					<div class="d-flex justify-content-between align-items-center my-1">
+						<div>
+							<p class="my-0 fs-6"><%= post.title %></p>
+						</div>
+						<div>
+							<% @blob = post.content.body.attachments.first %>
+							<% if @blob %>
+								<%= image_tag @blob.representation(resize_to_fill: [50, 50]),
                         { class: "img-fluid", alt: "blog-image", } %>
-						<% end %>
+							<% end %>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		<% end %>
 	<% end %>
 <% end %>
