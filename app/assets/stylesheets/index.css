@@ -1,4 +1,21 @@
 /********** Template CSS **********/
+.tag {
+    border: 1px solid lightgray;
+    padding-block: 0.2rem;
+    padding-inline: 1rem;
+    margin-block: 0.2rem;
+    margin-right: 0.35rem;
+    border-radius: 5px;
+    /* min-width: 50%; */
+    /* width: 100%; */
+}
+.tag p {
+    margin: 0;
+}
+.tag i {
+    font-size: 0.75rem;
+}
+/* ------------------- */
 .like-avatar img {
     border-radius: 50%;
     position: relative;

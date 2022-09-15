@@ -86,13 +86,12 @@
 						<button>subscribe</button>
 					</div>
 					<div class="topics my-3">
-						<p class="my-0 fw-bold">
-							Related Topics
-						</p>
+						<p class="my-0 fw-bold text-start">Related Topics</p>
+						<%= turbo_frame_tag post_tags_path(@post).parameterize, src: post_tags_path(@post) %>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 <% end %>
-<%= console %>
+<%# console %>
