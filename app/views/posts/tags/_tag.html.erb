@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(tag) do %>
+	<%= content_tag :div, nil, class: 'tag' do %>
+		<%= content_tag :p do %>
+			<%= tag.name.capitalize %>
+		<% end %>
+	<% end %>
+<% end %>
+<%# <div class="">
+	<a href="#" class="card-link"><i class="bi bi-pencil-square"></i></a>
+	<a href="#" class="card-link"><i class="bi bi-trash"></i></a>
+</div> %>
+<%# <i class="bi bi-tag top-0"></i> %>

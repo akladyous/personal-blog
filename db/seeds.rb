@@ -29,14 +29,6 @@ images = proc { |avatars_folder|
     user.avatar.attach(io: File.open("app/assets/images/avatars/#{idx}.jpg"), filename: "#{idx}.jpg" )
     user.save
     user_progress.increment
-    # 1.upto(POSTS_TO_CREATE/USERS_TO_CREATE) do
-    #   user.posts.create do |post|
-    #     post.title = Faker::Book.unique.title
-    #     paragraph = Faker::Lorem.unique.paragraph(sentence_count: 90, supplemental: true, random_sentences_to_add: 4)
-    #     post.content = "<p>".concat(paragraph).concat("</p>")
-    #     post.save
-    #     post_progress.increment
-    #   end
     end
 end
 
@@ -44,9 +36,6 @@ post_progress = ProgressBar.create(title: 'Creating Posts', total: User.count )
 User.all.each_with_index do |user, idx|
       title = Faker::Book.unique.title
       paragraph = Faker::Lorem.unique.paragraph(sentence_count: 90, supplemental: true, random_sentences_to_add: 4)
-      # image = File.open("app/assets/images/blogs/#{idx+1}.jpeg")
-      # blob = ActiveStorage::Blob.create_and_upload!(io: image, filename: "#{idx+1}.jpeg")
-      # attachment = ActionText::Attachment.from_attachable(blob)
       body = "<h3>#{title}</h3><p>#{paragraph}</p>"
       # body = "<h3>#{title}</h3>".concat("#{attachment.to_html}").concat("<p>#{paragraph}</p>")
       post = user.posts.new(title: title, content: body)
@@ -64,7 +53,20 @@ User.all.each do |user|
   like_progress.increment
 end
 
-# blob = ActiveStorage::Blob.create_and_upload!(io: img, filename: '4.jpg')
-# blob = ActiveStorage::Blob.create_and_upload!(io: File.open('path/to/a/file'), filename: 'filename')
-# attachment = ActionText::Attachment.from_attachable(blob)
-# p3 = u1.posts.create!(content: "<div>Sample content with attachment</div><div>#{attachment.to_html}</div>")
+tag_progress = ProgressBar.create(title: 'Creating Likes', total: Post.count*5 )
+Post.all.each do |post|
+  total_tags = rand(2..5)
+  1.upto(total_tags) do
+    name = proc { Faker::Lorem.unique.words(number: 1).first }
+    post.tags.create(name: name.call)
+  end
+end
+
+
+
+=begin
+image = File.open("app/assets/images/blogs/#{idx+1}.jpeg")
+blob = ActiveStorage::Blob.create_and_upload!(io: File.open('path/to/a/file'), filename: 'filename')
+attachment = ActionText::Attachment.from_attachable(blob)
+p3 = u1.posts.create!(content: "<div>Sample content with attachment</div><div>#{attachment.to_html}</div>")
+=end
