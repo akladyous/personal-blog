@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :posts do
     resource :like, controller: 'posts/likes', only: [:show, :create, :destroy]
-    resources :tags, controller: 'posts/tags'
-    resources :related, controller: 'posts/related', only: :index
+    resources :tags, module: :posts
+    resources :related, only: :index, module: :posts
     resources :comments, only: [:new, :create, :destroy], module: :posts
   end
 
@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [] do
     resources :posts, only: :index
+    resources :profile, except: :index ,module: :users
   end
   devise_for :users
   root 'home#index'
