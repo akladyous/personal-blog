@@ -5,20 +5,20 @@ class CommentsController < ApplicationController
   # end
 
   def create
-    @comment = ------.comments.new(comment_params)
+    @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to ------ }
+        format.html { redirect_to @commentable }
         format.turbo_stream
       end
     else
-      redirect_to ------, alert: 'Comment could not be created'
+      redirect_to @commentable, alert: 'Comment could not be created'
     end
   end
 
   def destroy
-    @comment = ------.comments.find(comment_params)
+    @comment = @commentable.comments.find(comment_params)
     @comment.destroy
     redirect_back_or_to root_path
   end

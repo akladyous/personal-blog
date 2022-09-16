@@ -1,18 +1,20 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
-  skip_before_action :authenticate_user!, only: %i[index show]
-  after_action :increment_view_count, only: :show
   include ActionView::Helpers::UrlHelper
+  skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_post, only: %i[edit update destroy]
+  before_action :current_user_posts
+  after_action :increment_view_count, only: :show
 
+  def prova
+    # debugger
+    user_signed_in? && params[:user_id].present?
+  end
   def index
-    if current_page?(user_posts_path(current_user))
-      @posts = current_user.posts.order(:created_at => :desc).with_rich_text_content_and_embeds
-    else
-      @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
-    end
+    @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds unless user_signed_in?
   end
 
   def show
+    @post = Post.includes(:comments).find(params[:id])
   end
 
   def new
@@ -55,11 +57,20 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def post_params
     params.require(:post).permit(:title, :content)
+  end
+
+  def current_user_posts
+    return @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds unless user_signed_in?
+    if current_page?(user_posts_path(current_user))
+      @posts = current_user.posts.order(:created_at => :desc).with_rich_text_content_and_embeds
+    else
+      @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
+    end
   end
 
   def increment_view_count

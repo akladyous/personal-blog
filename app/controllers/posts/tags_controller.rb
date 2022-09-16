@@ -1,4 +1,5 @@
 class Posts::TagsController < ApplicationController
+    skip_before_action :authenticate_user!, only: [:index, :show]
     before_action :set_tag #, only: %i[ show edit update destroy ]
 
     def index
