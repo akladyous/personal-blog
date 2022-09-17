@@ -1,5 +1,5 @@
 <%= turbo_frame_tag dom_id(post) do %>
-	<div id="<%= dom_id post %>" class="container" style="height: 15rem;">
+	<div id="<%= dom_id post %>" class="container mb-3">
 		<div class="row">
 			<div class="col-sm-12 col-md-8 col-lg-8">
 				<div class="post-info position-relative d-flex align-items-center my-1">
@@ -17,10 +17,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 col-md-4 col-lg-4 h-100 h-100"></div>
 		</div>
-		<div class="row" style="height: 10rem;">
-			<div class="col-sm-12 col-md-8 col-lg-8 bg-info h-100">
+		<div class="row" >
+			<div class="col-sm-12 col-md-8 col-lg-8">
 				<div class="blog-title">
 					<h3><%= post.title %></h3>
 				</div>
@@ -28,35 +27,33 @@
 					<p class=""><%= post.content.to_plain_text.strip.truncate(200) %></p>
 				</div>
 			</div>
-			<div class="col-sm-12 col-md-4 col-lg-4 h-100 h-100">
+			<div class="col-sm-12 col-md-4 col-lg-4 h-100">
 				<%# @blob = post.content.embeds.first.blob %>
 				<% @blob = post.content.body.attachments.first %>
-				<div class="container-fluid mx-auto">
-					<%# if @blob.representable? %>
+				<div class="d-flex justify-content-center align-items-center">
 					<% if @blob %>
-						<%= image_tag @blob.representation(resize_to_fill: local_assigns[:in_gallery] ? [800, 600] : [ 300, 155 ]),
-                        { class: "img-fluid", alt: "blog-image", } %>
+						<%= image_tag @blob.representation(resize_to_fill: local_assigns[:in_gallery] ? [150, 150] : [ 150, 125 ]),
+                        { class: "d-block rounded-3", alt: "blog-image", } %>
 					<% end %>
 				</div>
 			</div>
 		</div>
 		<div class="row">
 			<div class="post-info d-flex align-items-center my-1">
-				<div class="post-srv tag rounded-3">
-					<p align-items-center><%= "Programming" %></p>
+				<div class=" rounded-3 px-3 bg-light">
+					<p class="align-items-center mb-0"><%= post.tags.first.name %></p>
 				</div>
 				<div class="post-srv">
-					<p><%= "#{rand(1..30).to_s} min read"  %></p>
+					<p class="mb=0"><%= "#{time_to_read(post)} min read" %></p>
 				</div>
 				<div class="post-srv">
-					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dot" viewBox="0 0 16 16">
-						<path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
-					</svg>
+					<i class="bi bi-dot"></i>
 				</div>
 				<div class="post-srv">
-					<p><%= "Selected for you"  %></p>
+					<p class="mb-0"><%= "Selected for you"  %></p>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="container"><hr></div>
 <% end %>

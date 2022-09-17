@@ -41,8 +41,8 @@ form {
     padding-block: 0.2rem;
     padding-inline: 1rem;
     margin-block: 0.2rem;
-    margin-right: 0.35rem;
     border-radius: 5px;
+    /* margin-right: 0.35rem; */
     /* min-width: 50%; */
     /* width: 100%; */
 }
@@ -111,11 +111,6 @@ form {
 button {
     margin-bottom: 0;
 }
-.post-srv.tag {
-    background-color: #e9ecef;
-    padding-inline: 10px;
-}
-
 /* -------------------------- */
 .dropdown-toggle:after {
     content: none;
