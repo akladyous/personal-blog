@@ -9,9 +9,9 @@
 					<div class="d-inline-block">
 						<p class="mb-0"><%= post.created_at.strftime("%b %d") %></p>
 					</div>
-					<div class="d-inline-block">
+					<%# <div class="d-inline-block">
 						<p class="mb-0">Member only</p>
-					</div>
+					</div> %>
 					<div class="d-inline-block end-0 position-absolute">
 						<%= render 'post_links', post: post %>
 					</div>
@@ -46,12 +46,12 @@
 				<div class="post-srv">
 					<p class="mb=0"><%= "#{time_to_read(post)} min read" %></p>
 				</div>
-				<div class="post-srv">
+				<%# <div class="post-srv">
 					<i class="bi bi-dot"></i>
-				</div>
-				<div class="post-srv">
-					<p class="mb-0"><%= "Selected for you"  %></p>
-				</div>
+				</div> %>
+				<%# <div class="post-srv">
+					<p class="mb-0">Selected for you</p>
+				</div> %>
 			</div>
 		</div>
 	</div>
