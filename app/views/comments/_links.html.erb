@@ -4,9 +4,14 @@
 	</button>
 	<ul class="dropdown-menu dropdown-menu-end">
 		<li>
+			<%= link_to "Edit", edit_post_comment_path(comment.commentable, comment),
+                data: { turbo_frame: dom_id(comment.commentable, 'form') },
+                class: "dropdown-item px-2" if user_signed_in? &&  comment.user == current_user  %>
+		</li>
+		<li>
 			<%= button_to 'Delete', [comment.commentable, comment],
                 method: :delete,
-                form: { data: { turbo_frame: '_top'}, class: "button_to dropdown-item" } if
+                form: { data: { turbo_frame: '_top'}, class: "button_to dropdown-item px-1" } if
                 user_signed_in? &&  comment.user_id == current_user&.id  %>
 		</li>
 	</ul>

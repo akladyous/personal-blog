@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   # def new
   # end
 
+
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
@@ -18,12 +19,9 @@ class CommentsController < ApplicationController
     end
   end
 
-  def update
-  end
 
   def destroy
     @comment = @commentable.comments.find(params.permit(:id)[:id])
-    # debugger
     @comment.destroy
     respond_to do |format|
       format.html { redirect_back_or_to root_path }
@@ -31,8 +29,9 @@ class CommentsController < ApplicationController
     end
   end
 
+
   protected
-  def comment_params
-    params.require(:comment).permit(:content, :post_id, :id)
-  end
+    def comment_params
+      params.require(:comment).permit(:content)
+    end
 end
