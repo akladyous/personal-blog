@@ -25,6 +25,6 @@ class Posts::CommentsController < CommentsController
       @commentable = Post.find(params[:post_id])
     end
     def set_comment
-      @comment = @commentable.comments.find(params[:id])
+      @comment = current_user.comments.find(params[:id])
     end
 end

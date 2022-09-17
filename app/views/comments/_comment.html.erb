@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="col position-relative">
-				<%= render partial: 'comments/links', locals: { post: commentable, comment: comment} %>
+				<%= render partial: 'comments/links', locals: { post: commentable, comment: comment} if user_signed_in? %>
 			</div>
 		</div>
 		<div class="row">

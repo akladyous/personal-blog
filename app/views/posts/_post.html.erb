@@ -54,7 +54,7 @@
 				</div>
 				<div class="row py-2">
 					<div class="collapse" id="collapseComment">
-						<%= turbo_frame_tag dom_id(@post, 'form'), src: new_post_comment_path(@post), loading: 'lazy' %>
+						<%= turbo_frame_tag dom_id(@post, 'form'), src: new_post_comment_path(@post), loading: 'lazy' if user_signed_in? %>
 						<%= turbo_frame_tag post_comments_path(@post).parameterize do %>
 							<%= render partial: 'comments/comment', collection: @post.comments.order(created_at: :desc), locals: {commentable: @post} %>
 						<% end %>
