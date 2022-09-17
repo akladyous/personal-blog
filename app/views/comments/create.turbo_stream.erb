@@ -7,4 +7,4 @@
 	<%= turbo_stream.prepend post_comments_path(@commentable).parameterize, partial: 'comments/comment',
         locals: { commentable: @commentable, comment: @comment } %>
 <% end %>
-<%#  ActionView::RecordIdentifier.dom_id(target) ].compact.join %>
+<%#  ActionView::RecordIdentifier.dom_id(target) %>
