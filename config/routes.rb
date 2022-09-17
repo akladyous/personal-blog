@@ -13,10 +13,17 @@ Rails.application.routes.draw do
   resources :friendships, only: [:show, :new, :create, :destroy, :update]
   resources :me, only: :show
 
-  resources :users, only: [] do
+  resource :me, only: [:show] do
+    resource :profile
     resources :posts, only: :index
-    resources :profile, except: :index ,module: :users
+    resources :notifications
+    # resources :profile, except: :index, module: :users
   end
+
+  # resources :users, only: [] do
+  #   resources :posts, only: :index
+  #   resources :profile, except: :index ,module: :users
+  # end
   devise_for :users
   root 'home#index'
 end

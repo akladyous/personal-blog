@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   include ActionView::Helpers::UrlHelper
   skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_post, only: %i[edit update destroy]
-  before_action :current_user_posts
+  # before_action :current_user_posts
   after_action :increment_view_count, only: :show
 
   def prova
@@ -10,7 +10,8 @@ class PostsController < ApplicationController
     user_signed_in? && params[:user_id].present?
   end
   def index
-    @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds unless user_signed_in?
+    @posts = Post.order(created_at: :desc).limit(10).with_rich_text_content_and_embeds
+    # unless user_signed_in?
   end
 
   def show
