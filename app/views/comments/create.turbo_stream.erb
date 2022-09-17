@@ -1,5 +1,10 @@
 <% if @comment.errors.any? %>
-	<%= turbo_stream.update "form_comment_#{dom_id(@commentable)}", partial: 'form', locals: { commentable: @commentable, comment: @comment } %>
+	<%= turbo_stream.update dom_id(@commentable, 'form'), partial: 'comments/form',
+        locals: { commentable: @commentable, comment: @comment } %>
 <% else %>
-	<%= turbo_stream.prepend 'user_comments', partial: 'comment', locals: { comment: @comment} %>
+	<%= turbo_stream.replace dom_id(@commentable, 'form'), partial: 'comments/form',
+        locals: { commentable: @commentable, comment: Comment.new } %>
+	<%= turbo_stream.prepend post_comments_path(@commentable).parameterize, partial: 'comments/comment',
+        locals: { commentable: @commentable, comment: @comment } %>
 <% end %>
+<%#  ActionView::RecordIdentifier.dom_id(target) ].compact.join %>

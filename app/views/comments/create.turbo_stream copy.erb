@@ -1,0 +1,6 @@
+<% if @comment.errors.any? %>
+	<%= turbo_stream.update "form_#{dom_id(@commentable)}", partial: 'form', locals: { commentable: @commentable, comment: @comment } %>
+<% else %>
+	<%# debugger %>
+	<%= turbo_stream.prepend post_comments_path(@commentable).parameterize, partial: 'comment', locals: { comment: @comment} %>
+<% end %>

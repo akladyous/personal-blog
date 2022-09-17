@@ -5,11 +5,11 @@ class Comment < ApplicationRecord
 
   validates :content, length: { minimum: 5, maximum: 255 }
 
-  def deleted?
-    user.nil?
-  end
+  # def deleted?
+  #   user.nil?
+  # end
 
-  def destroy
-    user(user: nil, content: nil)
-  end
+  # def destroy
+  #   user(user: nil, content: nil)
+  # end
 end

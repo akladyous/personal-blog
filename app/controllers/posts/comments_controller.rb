@@ -1,9 +1,6 @@
 class Posts::CommentsController < CommentsController
   before_action :set_commentable
 
-  def show
-  end
-
   def new
     @comment = current_user.comments.new(commentable: @commentable)
   end

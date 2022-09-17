@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(commentable, 'form_comment') do %>
+<%= turbo_frame_tag dom_id(commentable, 'form') do %>
 	<div class="form_comment container-fluid px-0 d-flex flex-column comments">
 		<%= form_with model: [commentable, comment], id: dom_id(commentable, 'form') do |form| %>
 			<div class="flex-grow-1">
