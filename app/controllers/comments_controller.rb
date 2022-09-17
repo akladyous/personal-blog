@@ -5,15 +5,17 @@ class CommentsController < ApplicationController
   # end
 
   def create
+    # debugger
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
-    if @comment.save
-      respond_to do |format|
-        format.html { redirect_to @commentable }
-        format.turbo_stream
+    respond_to do |format|
+      if @comment.save
+          format.html { redirect_to @commentable }
+          format.turbo_stream
+      else
+          format.html { redirect_to @commentable, alert: 'Comment could not be created' }
+          format.turbo_stream
       end
-    else
-      redirect_to @commentable, alert: 'Comment could not be created'
     end
   end
 

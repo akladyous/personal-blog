@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resource :like, controller: 'posts/likes', only: [:show, :create, :destroy]
     resources :tags, module: :posts
     resources :related, only: :index, module: :posts
-    resources :comments, only: [:new, :create, :destroy], module: :posts
+    resources :comments, only: [:new, :create, :update, :destroy], module: :posts
   end
 
   resources :comments, only: [] do
