@@ -45,7 +45,9 @@
 					<div class="col-6 d-flex justify-content-start align-items-center">
 						<%= turbo_frame_tag post_like_path(@post).parameterize, src: post_like_path(@post) %>
 						<div class="post-comment px-3">
-							<i class="bi bi-chat-left"></i>
+							<a class="text-dark mx-1 fs-5" data-bs-toggle="collapse" href="#collapseComment" role="button" aria-expanded="false" aria-controls="collapseComment">
+								<i class="bi bi-chat-left mx-1 fs-5"></i>
+							</a>
 						</div>
 						<div class="post-comment px-3 d-flex ">
 						</div>
@@ -57,6 +59,14 @@
 						<div class="post-save px-3">
 							<i class="bi bi-box-arrow-up"></i>
 						</div>
+					</div>
+				</div>
+				<div class="row py-2">
+					<div class="collapse" id="collapseComment">
+						<%= turbo_frame_tag dom_id(@post, 'form'), src: new_post_comment_path(@post), loading: 'lazy' %>
+						<%= turbo_frame_tag post_comments_path(@post).parameterize do %>
+							<%= render partial: 'comments/comment', collection: @post.comments.order(created_at: :desc), locals: {commentable: @post} %>
+						<% end %>
 					</div>
 				</div>
 			</div>
@@ -82,7 +92,7 @@
 						</p>
 					</div>
 					<div class="my-3 frienships">
-						<%= render 'friendships/links', user: @post.user %>
+						<%= render 'friendships/links', user: @post.user if user_signed_in? %>
 						<button>subscribe</button>
 					</div>
 					<div class="topics my-3">
@@ -98,4 +108,3 @@
 		</div>
 	</div>
 <% end %>
-<%# console %>

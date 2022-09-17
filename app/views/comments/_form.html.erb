@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(commentable, 'form') do %>
+	<div class="form_comment container-fluid px-0 d-flex flex-column comments">
+		<%= form_with model: [commentable, comment], id: dom_id(commentable, 'form') do |form| %>
+			<div class="flex-grow-1">
+				<%= form.text_area :content, placeholder: 'Add a comment', class: "form-control", row: 5 %>
+			</div>
+			<div class="">
+				<%= form.submit :Respond, class: "btn btn-light rounded-5 m-2" %>
+			</div>
+		<% end %>
+	</div>
+<% end %>

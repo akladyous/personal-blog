@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :taggables, dependent: :destroy
   has_many :tags, through: :taggables
+  has_many :comments, as: :commentable
   has_rich_text :content
 
   validates :title, presence: true

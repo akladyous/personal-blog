@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments
 
   # users we are following
   has_many :following_users, class_name: 'Friendship', foreign_key: :follower_id, dependent: :destroy

@@ -1,4 +1,35 @@
 /********** Template CSS **********/
+.user_since {
+    font-size: 0.65rem;
+}
+.comment {
+    border-bottom: 1px solid lightgray;
+    position: relative;
+}
+.form_comment {
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 5px 10px 15px gray;
+}
+.form_comment .form-control {
+    border-style: none;
+    border-color: none;
+    border: none;
+    /* resize: horizontal; */
+}
+.form_comment .form-control:focus {
+    box-shadow: none;
+}
+.form_comment .form-control::-webkit-resizer {
+    border-width: 0;
+    border-style: none;
+    border-color: none;
+}
+/* ------------------- */
+form {
+    margin: 0;
+}
+/* ------------------- */
 .link-to {
     text-decoration: none;
     color: inherit;

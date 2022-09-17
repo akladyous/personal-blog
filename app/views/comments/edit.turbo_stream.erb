@@ -1,0 +1,2 @@
+<%= turbo_stream.update dom_id(@commentable, 'form'), partial: 'comments/form',
+    locals: { commentable: @commentable, comment: @comment } %>
