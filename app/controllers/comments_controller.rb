@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   # def new
   # end
 
-
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
@@ -19,7 +18,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
   def destroy
     @comment = @commentable.comments.find(params.permit(:id)[:id])
     @comment.destroy
@@ -28,7 +26,6 @@ class CommentsController < ApplicationController
       format.turbo_stream
     end
   end
-
 
   protected
     def comment_params
