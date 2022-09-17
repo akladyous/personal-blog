@@ -6,22 +6,32 @@
 			<div class="col-1">
 				<ul class="nav h-75 d-flex flex-column justify-content-center position-fixed">
 					<li class="nav-item my-3">
-						<%= link_to root_path, class: 'nav-link link-to' do %>
+						<%= link_to root_path, class: 'nav-link link-to',
+                            data: {bs_toggle: 'tooltip', bs_placement: 'bottom', bs_title: 'Home Page'}  do %>
 							<i class="bi bi-house-door fs-4"></i>
 						<% end %>
 					</li>
 					<li class="nav-item" my-3>
-						<%= link_to root_path, class: 'nav-link link-to' do %>
+						<%= link_to root_path, class: 'nav-link link-to',
+                            data: {bs_toggle: 'tooltip', bs_placement: 'bottom', bs_title: 'Notifications'}  do %>
 							<i class="bi bi-bell fs-4"></i>
 						<% end %>
 					</li>
 					<li class="nav-item my-3">
-						<%= link_to root_path, class: 'nav-link link-to' do %>
+						<%= link_to new_post_path, class: 'nav-link link-to',
+                            data: {bs_toggle: 'tooltip', bs_placement: 'bottom', bs_title: 'New Post'}  do %>
+							<i class="bi bi-file-earmark-plus fs-4"></i>
+						<% end %>
+					</li>
+					<li class="nav-item my-3">
+						<%= link_to root_path, class: 'nav-link link-to',
+                            data: {bs_toggle: 'tooltip', bs_placement: 'bottom', bs_title: 'Saved Posts'}  do %>
 							<i class="bi bi-bookmark-check fs-4"></i>
 						<% end %>
 					</li>
 					<li class="nav-item my-3">
-						<%= link_to root_path, class: 'nav-link link-to' do %>
+						<%= link_to root_path, class: 'nav-link link-to',
+                            data: {bs_toggle: 'tooltip', bs_placement: 'bottom', bs_title: 'Your Posts'}  do %>
 							<i class="bi bi-list-check fs-4"></i>
 						<% end %>
 					</li>
