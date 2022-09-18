@@ -1,4 +1,9 @@
 /********** Template CSS **********/
+input::placeholder {
+    font-size: 0.75rem !important;
+    color: gray !important;
+}
+
 .user_since {
     font-size: 0.65rem;
 }
