@@ -82,8 +82,10 @@
 							<span>Followers</span>
 						</p>
 					</div>
-					<div class="my-3 frienships">
+					<div class="my-2 frienships">
 						<%= render 'friendships/links', user: @post.user if user_signed_in? %>
+					</div>
+					<div class="my-2 subscription">
 						<button>subscribe</button>
 					</div>
 					<div class="topics my-3">

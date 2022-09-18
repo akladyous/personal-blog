@@ -1,9 +1,14 @@
 /********** Template CSS **********/
+/* ------------------- */
+.pending-request {
+    font-size: 0.9em;
+}
+/* ------------------- */
 input::placeholder {
     font-size: 0.75rem !important;
     color: gray !important;
 }
-
+/* ------------------- */
 .user_since {
     font-size: 0.65rem;
 }

@@ -9,7 +9,7 @@
 		<%= button_to 'Unfollow', friendship_path(user.id), method: :delete,
         form: {data: {turbo_confirm: 'Are you sure?'}} if current_user.friends_with?(user) %>
 		<% if current_user.requested_friends_with?(user) %>
-			<%= "Pending request #{time_ago_in_words(current_user.followed_users.first.created_at)} ago" %>
+			<p class="my-0 pending-request"><%= "Pending request #{time_ago_in_words(current_user.follow(user).created_at)} ago" %></p>
 		<% end %>
 	<% end %>
 <% end %>
