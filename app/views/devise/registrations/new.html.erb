@@ -6,45 +6,45 @@
 					SignIn Page
 				</div>
 				<div class="card-body">
-					<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {"data-turbo": false}) do |form| %>
+					<%= form_for(resource, as: resource_name, url: registration_path(resource_name), builder: BootstrapBuilder, html: {"data-turbo": false}) do |form| %>
 						<%= render 'avatar', form: form %>
 						<div class="form-group mb-2">
-							<%= form.label :first_name,{ class: 'form-label'} %>
-							<%= form.text_field :first_name, { class: 'form-control', autofocus: true, autocomplete: "off" } %>
+							<%= form.label :first_name %>
+							<%= form.text_field :first_name, { autofocus: true } %>
 							<% if resource.errors.has_key?(:first_name) %>
 								<%= content_tag :div, resource.errors.full_messages_for(:first_name).to_sentence, {class: ['d-block', 'invalid-feedback']} %>
 							<% end %>
 						</div>
 						<div class="form-group mb-2">
-							<%= form.label :last_name,{ class: 'form-label'} %>
-							<%= form.text_field :last_name, { class: 'form-control', autofocus: true, autocomplete: "off" } %>
+							<%= form.label :last_name %>
+							<%= form.text_field :last_name, { autocomplete: "off" } %>
 							<% if resource.errors.has_key?(:last_name) %>
 								<%= content_tag :div, resource.errors.full_messages_for(:last_name).to_sentence, {class: ['d-block', 'invalid-feedback']} %>
 							<% end %>
 						</div>
 						<div class="form-group mb-2">
-							<%= form.label :email,{ class: 'form-label'} %>
-							<%= form.email_field :email, { class: 'form-control', autofocus: true, autocomplete: "off" } %>
+							<%= form.label :email %>
+							<%= form.email_field :email %>
 							<% if resource.errors.has_key?(:email) %>
 								<%= content_tag :div, resource.errors.full_messages_for(:email).to_sentence, {class: ['d-block', 'invalid-feedback']} %>
 							<% end %>
 						</div>
 						<div class="form-group mb-2">
-							<%= form.label :password, { class: 'form-label'} %>
-							<%= form.password_field :password, { class: 'form-control', autofocus: true, autocomplete: "off", } %>
+							<%= form.label :password %>
+							<%= form.password_field :password %>
 							<% if resource.errors.has_key?(:password) %>
 								<%= content_tag :div, resource.errors.full_messages_for(:password).to_sentence, {class: ['d-block', 'invalid-feedback']} %>
 							<% end %>
 						</div>
 						<div class="form-group mb-2>
 							<%= form.label :password_confirmation  %>
-							<%= form.password_field :password_confirmation, { class: 'form-control', autofocus: true, autocomplete: "off" } %>
+							<%= form.password_field :password_confirmation, { autocomplete: "off" } %>
 							<% if resource.errors.has_key?(:password_confirmation) %>
 								<%= content_tag :div, resource.errors.full_messages_for(:password_confirmation).to_sentence, {class: ['d-block', 'invalid-feedback']} %>
 							<% end %>
 						</div>
 						<div class="form-control text-center border-0 mt-3">
-							<%= form.submit "Sign up", { class: "btn btn-light rounded-pill py-2 px-4"} %>
+							<%= form.submit "Sign up" %>
 						</div>
 					<% end %>
 					<div class="form-group">
