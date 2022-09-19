@@ -1,7 +1,11 @@
-<nav class="nav">
-	<a class="nav-link active" aria-current="page" href="#">Publication</a>
-	<a class="nav-link" href="#">Following</a>
-	<a class="nav-link" href="#">Blocked</a>
-	<a class="nav-link" href="#">Notifications</a>
-	<a class="nav-link">History</a>
-</nav>
+<div class="row">
+	<div class="col-2">
+		<%= render 'sidebar' %>
+	</div>
+	<div class="col-sm-12 col-md-7 col-lg-7">
+		<%= render 'activity' %>
+	</div>
+	<div class="col-sm-12 col-md-3 col-lg-3 px-0">
+		<%= render 'user_info' %>
+	</div>
+</div>

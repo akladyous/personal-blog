@@ -63,20 +63,19 @@ form {
     font-size: 0.75rem;
 }
 /* ------------------- */
-.like-avatar img {
+.avatars-container {
+    /* direction: rtl; */
+    display: flex;
+    text-align: left;
+    padding-left: 1rem;
+}
+.avatars-container img {
     border-radius: 50%;
     position: relative;
     left: -5px;
     margin-left: -15px;
-    z-index: 1;
+    z-index: 6;
     border: 2px solid white;
-}
-
-.likes-avatars {
-    /* direction: rtl; */
-    text-align: left;
-    padding-left: 1rem;
-    position: relative;
 }
 .likes_count {
     position: absolute;

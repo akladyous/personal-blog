@@ -1,0 +1,19 @@
+<div class="d-flex flex-column">
+	<div class="author text-start">
+		<div class="author my-3">
+			<%= image_tag current_user.avatar.representation(resize_to_fill: [100, 100]) , { class: "rounded-circle", alt: "post-image", } %>
+		</div>
+		<div>
+			<p class="my-0 fs-6 fw-semibold"><%= current_user.full_name %></p>
+		</div>
+		<div class="followers_count">
+			<p class="my-0 fs-6 fw-light">
+				<%= current_user.followers.count %>
+				<span>Followers</span>
+			</p>
+		</div>
+		<div class="my-2 frienships">
+			<%= render 'friendships/links', user: current_user if user_signed_in? %>
+		</div>
+	</div>
+</div>

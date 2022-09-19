@@ -1,0 +1,45 @@
+<div class="container">
+	<nav>
+		<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<button class="nav-link active" id="followers-tab" data-bs-toggle="tab"
+                    data-bs-target="#followers" type="button" role="tab" aria-controls="followers" aria-selected="true">
+				Followers
+			</button>
+			<button class="nav-link" id="following-tab" data-bs-toggle="tab"
+                data-bs-target="#following" type="button" role="tab" aria-controls="following" aria-selected="false">
+				Following
+			</button>
+			<button class="nav-link" id="pending-tab" data-bs-toggle="tab"
+                data-bs-target="#pending" type="button" role="tab" aria-controls="pending" aria-selected="false">
+				Pending
+			</button>
+			<button class="nav-link" id="muted-tab" data-bs-toggle="tab"
+                data-bs-target="#muted" type="button" role="tab" aria-controls="muted" aria-selected="false">
+				Muted
+			</button>
+		</div>
+	</nav>
+	<div class="tab-content" id="nav-tabContent">
+		<div class="tab-pane fade show active" id="followers" role="tabpanel"
+            aria-labelledby="followers-tab" tabindex="0">
+			<% current_user.friends.each do |follower| %>
+				<%= render 'friends', follower: follower %>
+			<% end %>
+		</div>
+		<div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab" tabindex="0">
+			<% current_user.followers.each do |follower| %>
+				<%= render 'friends', follower: follower %>
+			<% end %>
+		</div>
+		<div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
+			<% current_user.pending_friends.each do |follower| %>
+				<%= render 'friends', follower: follower %>
+			<% end %>
+		</div>
+		<div class="tab-pane fade" id="muted" role="tabpanel" aria-labelledby="muted-tab" tabindex="0">
+			<% current_user.blocked_friends.each do |follower| %>
+				<%= render 'friends', follower: follower %>
+			<% end %>
+		</div>
+	</div>
+</div>

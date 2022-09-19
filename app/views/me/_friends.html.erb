@@ -1,0 +1,17 @@
+<div class="row my-2">
+	<div class="col-12">
+		<div class="container d-flex align-items-center mb-2">
+			<div class="d-inline-flex flex-grow-1 align-items-center">
+				<div class="">
+					<%= image_tag  follower.avatar.representation(resize_to_fill: [40, 40]) , { class: "rounded-circle", alt: "post-image", } %>
+				</div>
+				<div class="mx-3">
+					<p class='mb-0'><%= follower.full_name %></p>
+				</div>
+			</div>
+			<div class="d-flex">
+				<%= render 'friendships/links', user: follower %>
+			</div>
+		</div>
+	</div>
+</div>
