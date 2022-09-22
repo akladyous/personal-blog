@@ -6,15 +6,19 @@
 			<%= turbo_frame_tag "public_posts", src: posts_path %>
 		</div>
 		<div class="col-3">
-			<div class="sticky-top mt-4">
-				<p class="my-0 fw-bold text-start">Top 10 Topics</p>
-				<% Tag.top10.each do |tag| %>
-					<p class="d-inline-block border border-1 rounded-1 px-3 my-1"><%= tag.capitalize %></p>
-				<% end %>
+			<div class="sticky-top">
+				<div>
+					<div>
+						<p class="my-0 fw-bold text-start">Trending Topics</p>
+					</div>
+					<div class="mt-2">
+						<% Tag.top10.each do |tag| %>
+							<p class="d-inline-block border border-1 rounded-1 px-3 my-1 fw-light"><%= tag.capitalize %></p>
+						<% end %>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <%# link_to 'posts', [current_user, :posts] if user_signed_in? %>
-<%# <div class="trending">
-	</div> %>
