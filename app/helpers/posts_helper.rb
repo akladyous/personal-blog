@@ -1,4 +1,5 @@
 module PostsHelper
+  include Pagy::Frontend
 
   def time_to_read(post)
     average_words_per_minute = 200.00
