@@ -100,14 +100,13 @@ form {
 }
 /* -------------------------- */
 .side-area {
-    height: 600px;
+    background-image: url("home.jpeg");
+    margin-inline: 1em;
     width: 100%;
-}
-.side-area-bg {
-    height: 100%;
-    background-image: url("blog_wordcloud.png");
-    object-fit: fill;
+    height: 600px;
+    background-size: contain;
     background-repeat: no-repeat;
+    background-position: center;
 }
 /* -------------------------- */
 .post-info {
