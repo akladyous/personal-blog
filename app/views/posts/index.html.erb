@@ -9,6 +9,11 @@
 		<% end %>
 		<%# render 'post_preview', post: post %>
 		<%# link_to "Show this post", post %>
+		<div class="row-cols-12 my-auto py-3">
+			<div class="col-auto text-center">
+				<%== pagy_nav(@pagy) %>
+			</div>
+		</div>
 	<% end %>
 </div>
 <%# console %>
