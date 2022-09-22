@@ -13,7 +13,7 @@
 						<p class="mb-0">Member only</p>
 					</div> %>
 					<div class="d-inline-block end-0 position-absolute">
-						<%= render 'post_links', post: post %>
+						<%= render 'post_links', post: post if user_signed_in? %>
 					</div>
 				</div>
 			</div>
@@ -33,9 +33,11 @@
 				<%# @blob = post.content.embeds.first.blob %>
 				<% @blob = post.content.body.attachments.first %>
 				<div class="d-flex justify-content-center align-items-center h-100 post-blob">
-					<% if @blob %>
-						<%= image_tag @blob.representation(resize_to_fill: [175, 125]),
+					<%= link_to post, target: '_top', class: "link-to" do %>
+						<% if @blob %>
+							<%= image_tag @blob.representation(resize_to_fill: [175, 125]),
                         { class: "d-block rounded-3", alt: "blog-image", } %>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
