@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :posts do
     resource :like, controller: 'posts/likes', only: [:show, :create, :destroy]
     resources :tags, module: :posts
@@ -25,5 +26,6 @@ Rails.application.routes.draw do
   #   resources :profile, except: :index ,module: :users
   # end
   devise_for :users
+  resources :contact, only: [:index, :show]
   root 'home#index'
 end
