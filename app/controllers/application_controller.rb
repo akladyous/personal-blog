@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_account_update_params, if: :devise_controller?
   before_action :authenticate_user!
 
+
   protected
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|

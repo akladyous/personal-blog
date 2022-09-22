@@ -5,6 +5,8 @@ class PostsController < ApplicationController
   # before_action :current_user_posts
   after_action :increment_view_count, only: :show
 
+  include Pagy::Backend
+
   def prova
     # debugger
     user_signed_in? && params[:user_id].present?
