@@ -45,6 +45,26 @@ form {
     color: inherit;
     outline: 0;
 }
+.link-to:hover {
+    text-decoration: solid;
+    text-shadow: 10px;
+    font-weight: 400;
+    font-size: 1.01em;
+    color: black;
+}
+.post-blob {
+    overflow: hidden;
+    margin: 1%;
+}
+.post-blob img {
+    width: 100%;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+}
+.post-blob img:hover {
+    transform: scale(1.1);
+    opacity: 0.9;
+}
 /* ------------------- */
 .tag {
     border: 1px solid lightgray;

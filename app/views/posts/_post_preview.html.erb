@@ -20,19 +20,21 @@
 		</div>
 		<div class="row" >
 			<div class="col-sm-12 col-md-8 col-lg-8">
-				<div class="blog-title">
-					<h3><%= post.title %></h3>
-				</div>
-				<div class='blog-content'>
-					<p class=""><%= post.content.to_plain_text.strip.truncate(200) %></p>
-				</div>
+				<%= link_to post, target: '_top', class: "link-to" do %>
+					<div class="blog-title">
+						<h3><%= post.title %></h3>
+					</div>
+					<div class='blog-content'>
+						<p class=""><%= post.content.to_plain_text.strip.truncate(200) %></p>
+					</div>
+				<% end %>
 			</div>
 			<div class="col-sm-12 col-md-4 col-lg-4 h-100">
 				<%# @blob = post.content.embeds.first.blob %>
 				<% @blob = post.content.body.attachments.first %>
-				<div class="d-flex justify-content-center align-items-center">
+				<div class="d-flex justify-content-center align-items-center h-100 post-blob">
 					<% if @blob %>
-						<%= image_tag @blob.representation(resize_to_fill: local_assigns[:in_gallery] ? [150, 150] : [ 150, 125 ]),
+						<%= image_tag @blob.representation(resize_to_fill: [175, 125]),
                         { class: "d-block rounded-3", alt: "blog-image", } %>
 					<% end %>
 				</div>
