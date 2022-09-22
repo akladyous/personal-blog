@@ -26,6 +26,6 @@ Rails.application.routes.draw do
   #   resources :profile, except: :index ,module: :users
   # end
   devise_for :users
-  resources :contact, only: [:index, :show]
+  resources :contact, only: [:index, :new, :create]
   root 'home#index'
 end
