@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   #   resources :profile, except: :index ,module: :users
   # end
   devise_for :users
-  resources :contact, only: [:index, :new, :create]
+  # resources :contact, only: [:index, :create]
+  # get 'contact', to: "contact#index"
+  # post 'contact', to: 'contact#create'
+  scope model: 'contact' do
+    get 'contact', to: "contact#index"
+    post 'contact', to: 'contact#create'
+  end
   root 'home#index'
 end

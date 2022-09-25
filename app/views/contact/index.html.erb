@@ -1,3 +1,19 @@
-<div class="container">
-	<%= render 'form' %>
+<div class="container py-5">
+	<div class="mb-3">
+		<h1>Give us your feedback</h1>
+	</div>
+	<div class="row">
+		<div class="container">
+			<%# render 'map' %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-8 col-lg-8">
+			<%= render 'form', contact: @contact %>
+		</div>
+		<div class="col-sm-12 col-md-4 col-lg-4">
+			<div class="pet-bg h-100">
+			</div>
+		</div>
+	</div>
 </div>

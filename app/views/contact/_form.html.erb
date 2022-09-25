@@ -1,1 +1,43 @@
-<h1>form</h1>
+<%= form_with model: [contact], url: contact_path,
+    data: { controller: 'validate', validate_target: 'form' } do |form| %>
+	<div class="row">
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group mb-2">
+				<%= form.label :name, { class: 'form-label' } %>
+				<%= form.text_field :name, { class: 'form-control',
+                    data: { validate_target: :input, action:
+                    "change->validate#handleChange", constrain: @constrains[:name] } } %>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group mb-2">
+				<%= form.label :email, { class: 'form-label' } %>
+				<%= form.email_field :email, { class: 'form-control',
+                    data: { validate_target: :input,
+                    action: "change->validate#handleChange", constrain: @constrains[:email] } } %>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group mb-2">
+				<%= form.label :subject, { class: 'form-label' } %>
+				<%= form.text_field :subject, { class: 'form-control',
+                    data: { validate_target: :input,
+                    action: "change->validate#handleChange", constrain: @constrains[:subject] } } %>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group mb-2">
+				<%= form.label :message, { class: 'form-label' } %>
+				<%= form.text_area :message, { class: 'form-control',
+                    data: { validate_target: :input,
+                    action: "change->validate#handleChange", constrain: @constrains[:message] } } %>
+			</div>
+		</div>
+		<div class="col-sm-12 col-md-6 col-lg-6">
+			<div class="form-group mb-2">
+				<%= form.submit :submit, class: 'boxed-btn3 py-0 border-0',
+                    data: { action: "validate#handleForm" } %>
+			</div>
+		</div>
+	</div>
+<% end %>

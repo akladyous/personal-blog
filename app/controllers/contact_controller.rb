@@ -1,6 +1,6 @@
 class ContactController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :set_contact, only: :new
+
   def index
     @constrains = {
       name: { presence: { allowEmpty: false, message: "^Name name can't be blank" } },
@@ -9,18 +9,22 @@ class ContactController < ApplicationController
       subject: { presence: { allowEmpty: false, message: "^Subject name can't be blank" } },
       message: { presence: { allowEmpty: false, message: "^Message name can't be blank" } }
     }
+    @contact = Contact.new
   end
 
   def create
-    @contact = contact.params.to_h
+    debugger
+    @contact = Contact.new contact_params
+    if @contact.valid?
+      puts 'ok'
+    else
+      puts 'ko'
+    end
   end
 
   private
   def contact_params
-    params.permit(:name, :email, :subject, :message)
+    params.require(:contact).permit(:name, :email, :subject, :message)
   end
 
-  def set_contact
-    @contact = Contact.new
-  end
 end
