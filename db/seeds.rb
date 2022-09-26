@@ -1,3 +1,4 @@
+require 'ruby-progressbar'
 require 'faker'
 Faker::Config.locale = :en
 
@@ -9,11 +10,11 @@ LIKES_TO_CREATE = USERS_TO_CREATE * POSTS_TO_CREATE * 5
 system('clear')
 puts "🌱 Seeding #{USERS_TO_CREATE.to_i} Users ..."
 
-user_progress = ProgressBar.create(title: 'Creating users', total: USERS_TO_CREATE )
+user_progress = ProgressBar.create(title: 'Creating users', total: USERS_TO_CREATE)
 
-folder = Rails.root.join("app/assets/images/avatars")
+folder = Rails.root.join('app/assets/images/avatars')
 images = proc { |avatars_folder|
-  Dir.entries(avatars_folder).map(&:downcase).reject{ |folder| folder.starts_with? '.'}
+  Dir.entries(avatars_folder).map(&:downcase).reject { |folder| folder.starts_with? '.' }
 }
 
 1.upto(USERS_TO_CREATE) do |idx|
@@ -24,26 +25,26 @@ images = proc { |avatars_folder|
     user.first_name = first_name
     user.last_name = last_name
     user.email = email
-    user.password = "000000"
-    user.password_confirmation = "000000"
-    user.avatar.attach(io: File.open("app/assets/images/avatars/#{idx}.jpg"), filename: "#{idx}.jpg" )
+    user.password = '000000'
+    user.password_confirmation = '000000'
+    user.avatar.attach(io: File.open("app/assets/images/avatars/#{idx}.jpg"), filename: "#{idx}.jpg")
     user.save
     user_progress.increment
-    end
+  end
 end
 
-post_progress = ProgressBar.create(title: 'Creating Posts', total: User.count )
-User.all.each_with_index do |user, idx|
-      title = Faker::Book.unique.title
-      paragraph = Faker::Lorem.unique.paragraph(sentence_count: 90, supplemental: true, random_sentences_to_add: 4)
-      body = "<h3>#{title}</h3><p>#{paragraph}</p>"
-      # body = "<h3>#{title}</h3>".concat("#{attachment.to_html}").concat("<p>#{paragraph}</p>")
-      post = user.posts.new(title: title, content: body)
-      post.save
-      post_progress.increment
+post_progress = ProgressBar.create(title: 'Creating Posts', total: User.count)
+User.all.each_with_index do |user, _idx|
+  title = Faker::Book.unique.title
+  paragraph = Faker::Lorem.unique.paragraph(sentence_count: 90, supplemental: true, random_sentences_to_add: 4)
+  body = "<h3>#{title}</h3><p>#{paragraph}</p>"
+  # body = "<h3>#{title}</h3>".concat("#{attachment.to_html}").concat("<p>#{paragraph}</p>")
+  post = user.posts.new(title: title, content: body)
+  post.save
+  post_progress.increment
 end
 
-like_progress = ProgressBar.create(title: 'Creating Likes', total: User.count*6 )
+like_progress = ProgressBar.create(title: 'Creating Likes', total: User.count * 6)
 User.all.each do |user|
   posts_ids = Post.ids
   posts_ids.sample(6).each do |post_id|
@@ -53,7 +54,7 @@ User.all.each do |user|
   like_progress.increment
 end
 
-tag_progress = ProgressBar.create(title: 'Creating Likes', total: Post.count*5 )
+tag_progress = ProgressBar.create(title: 'Creating Likes', total: Post.count * 5)
 words = Faker::Lorem.unique.words(number: 30)
 Post.all.each do |post|
   total_tags = rand(2..5)
@@ -63,12 +64,8 @@ Post.all.each do |post|
   end
 end
 
-
-
-=begin
-image = File.open("app/assets/images/blogs/#{idx+1}.jpeg")
-blob = ActiveStorage::Blob.create_and_upload!(io: File.open('path/to/a/file'), filename: 'filename')
-content.append_attachables(blob)
-attachment = ActionText::Attachment.from_attachable(blob)
-p3 = u1.posts.create!(content: "<div>Sample content with attachment</div><div>#{attachment.to_html}</div>")
-=end
+# image = File.open("app/assets/images/blogs/#{idx+1}.jpeg")
+# blob = ActiveStorage::Blob.create_and_upload!(io: File.open('path/to/a/file'), filename: 'filename')
+# content.append_attachables(blob)
+# attachment = ActionText::Attachment.from_attachable(blob)
+# p3 = u1.posts.create!(content: "<div>Sample content with attachment</div><div>#{attachment.to_html}</div>")
