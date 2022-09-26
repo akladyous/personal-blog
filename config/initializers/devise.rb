@@ -1,14 +1,14 @@
 class TurboFailureApp < Devise::FailureApp
   def respond
-      if request_format == :turbo_stream
+    if request_format == :turbo_stream
       redirect
-      else
-          super
-      end
+    else
+      super
+    end
   end
 
   def skip_format?
-    %w(html turbo_stream */*).include? request_format.to_s
+    %w[html turbo_stream */*].include? request_format.to_s
   end
 end
 # frozen_string_literal: true
@@ -22,12 +22,13 @@ end
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.navigational_formats = ['/', :html, :turbo_stream]  # The secret key used by Devise. Devise uses this key to generate
+  config.navigational_formats = ['/', :html, :turbo_stream] # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = Rails.application.credentials.secret_key_base
+  config.secret_key = '12bc146b-7c7c-4b01-99e2-f06a8a6f1858'
+  # Rails.application.credentials.secret_key_base
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -287,9 +288,9 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
   # ==> Warden configuration
-    config.warden do |manager|
-      manager.failure_app = TurboFailureApp
-    end
+  config.warden do |manager|
+    manager.failure_app = TurboFailureApp
+  end
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
