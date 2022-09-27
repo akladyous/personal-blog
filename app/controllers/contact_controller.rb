@@ -13,7 +13,6 @@ class ContactController < ApplicationController
   end
 
   def create
-    debugger
     @contact = Contact.new contact_params
     if @contact.valid?
       puts 'ok'
@@ -23,8 +22,8 @@ class ContactController < ApplicationController
   end
 
   private
+
   def contact_params
     params.require(:contact).permit(:name, :email, :subject, :message)
   end
-
 end

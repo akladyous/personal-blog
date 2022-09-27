@@ -1,42 +1,44 @@
 <%= form_with model: [contact], url: contact_path,
     data: { controller: 'validate', validate_target: 'form' } do |form| %>
 	<div class="row">
-		<div class="col-sm-12 col-md-6 col-lg-6">
-			<div class="form-group mb-2">
-				<%= form.label :name, { class: 'form-label' } %>
-				<%= form.text_field :name, { class: 'form-control',
+		<div class="col">
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :name, { class: 'form-label' } %>
+					<%= form.text_field :name, { class: 'form-control',
                     data: { validate_target: :input, action:
                     "change->validate#handleChange", constrain: @constrains[:name] } } %>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-lg-6">
-			<div class="form-group mb-2">
-				<%= form.label :email, { class: 'form-label' } %>
-				<%= form.email_field :email, { class: 'form-control',
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :email, { class: 'form-label' } %>
+					<%= form.email_field :email, { class: 'form-control',
                     data: { validate_target: :input,
                     action: "change->validate#handleChange", constrain: @constrains[:email] } } %>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-lg-6">
-			<div class="form-group mb-2">
-				<%= form.label :subject, { class: 'form-label' } %>
-				<%= form.text_field :subject, { class: 'form-control',
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :subject, { class: 'form-label' } %>
+					<%= form.text_field :subject, { class: 'form-control',
                     data: { validate_target: :input,
                     action: "change->validate#handleChange", constrain: @constrains[:subject] } } %>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-lg-6">
-			<div class="form-group mb-2">
-				<%= form.label :message, { class: 'form-label' } %>
-				<%= form.text_area :message, { class: 'form-control',
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :message, { class: 'form-label' } %>
+					<%= form.text_area :message, { class: 'form-control', rows: 5,
                     data: { validate_target: :input,
                     action: "change->validate#handleChange", constrain: @constrains[:message] } } %>
+				</div>
 			</div>
-		</div>
-		<div class="col-sm-12 col-md-6 col-lg-6">
-			<div class="form-group mb-2">
-				<%= form.submit :submit, class: 'boxed-btn3 py-0 border-0',
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.submit :submit, class: 'btn btn-light rounded rounded-2 px-3',
                     data: { action: "validate#handleForm" } %>
+				</div>
 			</div>
 		</div>
 	</div>

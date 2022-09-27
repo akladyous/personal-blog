@@ -20,8 +20,7 @@
 			<%= link_to "posts", posts_path, {class: "nav-link", 'aria-current': "line" } %>
 			<%= link_to "features", root_path, {class: "nav-link", 'aria-current': "line" } %>
 			<%= link_to "pricing", root_path, {class: "nav-link", 'aria-current': "line" } %>
-			<%# link_to "testimonial", root_path, {class: "nav-link", 'aria-current': "line" } %>
-			<%= link_to "contact", root_path, {class: "nav-link", 'aria-current': "line" } %>
+			<%= link_to "contact", contact_path, {class: "nav-link", 'aria-current': "line" } %>
 		</div>
 		<div class="navbar-nav gap-3">
 			<% if user_signed_in? %>
