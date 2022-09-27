@@ -14,7 +14,7 @@ class PostsController < ApplicationController
 
   def index
     # @posts = Post.order(created_at: :desc).with_rich_text_content_and_embeds
-    @pagy, @posts = pagy(Post.order(created_at: :desc).with_rich_text_content_and_embeds, items: 5)
+    @pagy, @posts = pagy(Post.order(created_at: :desc).with_rich_text_content_and_embeds, items: 10)
     # unless user_signed_in?
   end
 
