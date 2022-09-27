@@ -12,7 +12,7 @@
 						<div class="form-group mb-2">
 							<%= form.label :email, { class: 'form-label'} %>
 							<%= form.email_field :email, { class: 'form-control', autofocus: true, autocomplete: "off", }  %>
-							<%= feedback_for? resource, :email %>
+							<%= object_errors_for? resource, :email %>
 						</div>
 						<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
 							<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -20,17 +20,17 @@
 						<div class="form-group mb-2">
 							<%= form.label :password, { class: 'form-label'} %>
 							<%= form.password_field :password, { class: "form-control ", autocomplete: "off", placeholder: "leave blank if you don't want to change it"} %>
-							<%= feedback_for? resource, :password %>
+							<%= object_errors_for? resource, :password %>
 						</div>
 						<div class="form-group mb-2">
 							<%= form.label :password_confirmation, { class: 'form-label'} %>
 							<%= form.password_field :password_confirmation, { class: 'form-control', autocomplete: "off" } %>
-							<%= feedback_for? resource, :password_confirmation %>
+							<%= object_errors_for? resource, :password_confirmation %>
 						</div>
 						<div class="form-group mb-2">
 							<%= form.label :current_password, { class: 'form-label'} %>
 							<%= form.password_field :current_password, { class: 'form-control', autocomplete: "off", placeholder: "required to confirm your changes" } %>
-							<%= feedback_for? resource, :current_password %>
+							<%= object_errors_for? resource, :current_password %>
 						</div>
 						<div class="form-control text-center border-0 mt-3">
 							<%= form.submit "Update", { class: "btn btn-light rounded-pill py-2 px-4"} %>

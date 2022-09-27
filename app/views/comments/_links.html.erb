@@ -11,7 +11,7 @@
 		<li>
 			<%= button_to 'Delete', [comment.commentable, comment],
                 method: :delete,
-                form: { data: { turbo_frame: '_top'}, class: "button_to dropdown-item px-1" } if
+                form: { data: { turbo_frame: '_top'}, class: "button_to dropdown-item px-2" } if
                 user_signed_in? &&  comment.user_id == current_user&.id  %>
 		</li>
 	</ul>
