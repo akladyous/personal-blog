@@ -1,0 +1,44 @@
+<%= form_with model: contact, url: contact_path,
+    data: { controller: 'validate', validate_target: 'form', turbo_frame: 'contact-us' } do |form| %>
+	<div class="row">
+		<div class="col">
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :name, { class: 'form-label' } %>
+					<%= form.text_field :name, { class: 'form-control',
+                        data: { validate_target: :input, action: "change->validate#handleChange", constrain: contact_contrains[:name] } } %>
+					<%= object_errors_for?(contact, :name) %>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :email, { class: 'form-label' } %>
+					<%= form.email_field :email, { class: 'form-control',
+                        data: { validate_target: :input, action: "change->validate#handleChange", constrain: contact_contrains[:email] } } %>
+					<%= object_errors_for?(contact, :email) %>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :subject, { class: 'form-label' } %>
+					<%= form.text_field :subject, { class: 'form-control',
+                        data: { validate_target: :input, action: "change->validate#handleChange", constrain: contact_contrains[:subject] } } %>
+					<%= object_errors_for?(contact, :subject) %>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.label :message, { class: 'form-label' } %>
+					<%= form.text_area :message, { class: 'form-control', rows: 5,
+                        data: { validate_target: :input, action: "change->validate#handleChange", constrain: contact_contrains[:message] } } %>
+					<%= object_errors_for?(contact, :message) %>
+				</div>
+			</div>
+			<div class="col-sm-12 col-md-6 col-lg-10">
+				<div class="form-group mb-2">
+					<%= form.submit :submit, class: 'btn btn-light rounded rounded-2 px-3', data: { action: "validate#handleForm" } %>
+				</div>
+			</div>
+		</div>
+	</div>
+<% end %>
