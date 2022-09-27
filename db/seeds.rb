@@ -64,6 +64,8 @@ Post.all.each do |post|
   end
 end
 
+Post.find_each(&:save)
+
 # image = File.open("app/assets/images/blogs/#{idx+1}.jpeg")
 # blob = ActiveStorage::Blob.create_and_upload!(io: File.open('path/to/a/file'), filename: 'filename')
 # content.append_attachables(blob)
