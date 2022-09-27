@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(:comments).find(params[:id])
+    @post = Post.friendly.includes(:comments).find(params[:id])
   end
 
   def new
@@ -62,11 +62,12 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.friendly.find(params[:id])
+    redirect_to @post, status: :moved_permanently if params[:id] != @post.slug
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content, :slug)
   end
 
   def current_user_posts

@@ -1,4 +1,7 @@
 class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: %i[slugged history]
+
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :taggables, dependent: :destroy
@@ -10,9 +13,7 @@ class Post < ApplicationRecord
   validate :validate_content
 
   def validate_content
-    if self.content.body.blank?
-      errors.add(:content, "Can't be blank")
-    end
+    errors.add(:content, "Can't be blank") if content.body.blank?
   end
 
   def belongs_to?(user)

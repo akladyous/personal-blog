@@ -2,8 +2,7 @@ class Posts::LikesController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_post
 
-  def show
-  end
+  def show; end
 
   def create
     @post.likes.where(user_id: current_user.id).first_or_create
@@ -22,7 +21,8 @@ class Posts::LikesController < ApplicationController
   end
 
   protected
+
   def set_post
-    @post = Post.find(params[:post_id])
+    @post = Post.friendly.find(params[:post_id])
   end
 end

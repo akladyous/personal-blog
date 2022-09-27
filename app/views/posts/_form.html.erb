@@ -13,6 +13,12 @@
 		<%= form.label :title, style: "display: block" %>
 		<%= form.text_field :title %>
 	</div>
+	<% if form.object.persisted?%>
+		<div>
+			<%= form.label :slug, style: "display: block" %>
+			<%= form.text_field :slug %>
+		</div>
+	<% end %>
 	<div>
 		<%# form.label :content %>
 		<%= form.rich_text_area :content %>

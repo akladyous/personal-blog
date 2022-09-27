@@ -49,6 +49,7 @@ gem 'bootsnap', require: false
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
+gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'image_processing', '~> 1.2'
 gem 'pagy', '~> 5.10', '>= 5.10.1'
 
@@ -71,15 +72,15 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'faker', '~> 2.23'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'faker', '~> 2.23'
 end
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
 group :development, :test do
   gem 'htmlbeautifier'
+  gem 'ruby-progressbar', '~> 1.8', '>= 1.8.1'
   gem 'solargraph', '~> 0.45.0'
   gem 'solargraph-rails', '~> 0.3.1'
-  gem 'ruby-progressbar', '~> 1.8', '>= 1.8.1'
 end
