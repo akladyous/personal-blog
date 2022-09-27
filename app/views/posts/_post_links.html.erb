@@ -19,7 +19,7 @@
 		<li><a class="dropdown-item" href="#">Separated link</a></li> %>
 		<%# <li><hr class="dropdown-divider"></li> %>
 		<li>
-			<%= button_to "Delete", posts_path,
+			<%= button_to "Delete", posts_path(post),
                 method: :delete, class: "dropdown-item",
                 form: { data: { turbo_frame: '_top'}, class: "button_to dropdown-item" } if user_signed_in? &&  post.user_id == current_user&.id %>
 		</li>
