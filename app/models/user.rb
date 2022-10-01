@@ -19,7 +19,6 @@ class User < ApplicationRecord
     self.last_name = split.last
   end
 
-  # delegate :likes?, to: :posts
   def likes?(post)
     likes.where(post_id: post.id).any?
   end
