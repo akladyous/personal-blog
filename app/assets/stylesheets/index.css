@@ -115,7 +115,6 @@ form {
 .button_to > button {
     all: initial;
     display: block;
-    /* padding: 5; */
     font-family: inherit;
 }
 /* -------------------------- */
