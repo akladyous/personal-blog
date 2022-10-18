@@ -72,13 +72,14 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main', require: false
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rspec-rails', '~> 6.0'
 end
 gem 'devise', '~> 4.8', '>= 4.8.1'
 
 group :development, :test do
+  gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'main', require: false
   gem 'htmlbeautifier'
   gem 'ruby-progressbar', '~> 1.8', '>= 1.8.1'
   gem 'solargraph', '~> 0.45.0'
