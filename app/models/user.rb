@@ -2,8 +2,11 @@ class User < ApplicationRecord
   include Users::UserRelations
   include Users::UserRelationRequests
   # include ActionText::Attachable
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :trackable
+
+  # before_create :generate_token
 
   has_one_attached :avatar
   has_many :posts, dependent: :destroy
@@ -22,4 +25,11 @@ class User < ApplicationRecord
   def likes?(post)
     likes.where(post_id: post.id).any?
   end
+
+  def generate_token
+      loop do
+        break unless self.class.exists?(token: token)
+        self.token = SecureRandom.hex
+      end
+    end
 end
