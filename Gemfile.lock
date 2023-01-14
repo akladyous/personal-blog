@@ -108,6 +108,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     e2mmap (0.1.0)
     erubi (1.11.0)
     ffi (1.15.5)
@@ -315,6 +319,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise (~> 4.8, >= 4.8.1)
+  dotenv-rails (~> 2.8, >= 2.8.1)
   faker!
   friendly_id (~> 5.4, >= 5.4.2)
   htmlbeautifier

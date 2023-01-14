@@ -1,18 +1,23 @@
 default: &default
-    adapter: postgresql
-    encoding: unicode
-    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 development:
-    <<: *default
-    database: personal_blog_development
+  <<: *default
+  database: personal_blog_development
+  host: localhost
 
 test:
-    <<: *default
-    database: personal_blog_test
+  <<: *default
+  database: personal_blog_test
+  host: localhost
 
 production:
-    <<: *default
-    database: personal_blog_production
-    username: personal_blog
-    password: <%= ENV["PERSONAL_BLOG_DATABASE_PASSWORD"] %>
+  <<: *default
+  database: <%= ENV["POSTGRES_DB_PRODUCTION"] %>
+  host: <%= ENV["POSTGRES_HOST"] %>
+  port: <%= ENV["POSTGRES_PORT"] %>
+  timeout: 5000
