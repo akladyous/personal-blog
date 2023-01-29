@@ -1,0 +1,11 @@
+2022-09-06 15:17:17.987 EDT [86972] LOG:  starting PostgreSQL 14.5 (Homebrew) on x86_64-apple-darwin21.5.0, compiled by Apple clang version 13.1.6 (clang-1316.0.21.2.5), 64-bit
+2022-09-06 15:17:17.990 EDT [86972] LOG:  listening on IPv6 address "::1", port 5432
+2022-09-06 15:17:17.990 EDT [86972] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2022-09-06 15:17:17.991 EDT [86972] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2022-09-06 15:17:18.020 EDT [86973] LOG:  database system was shut down at 2022-09-06 15:17:10 EDT
+2022-09-06 15:17:18.029 EDT [86972] LOG:  database system is ready to accept connections
+2022-09-07 09:01:21.145 EDT [86972] LOG:  received fast shutdown request
+2022-09-07 09:01:21.145 EDT [86972] LOG:  aborting any active transactions
+2022-09-07 09:01:21.148 EDT [86972] LOG:  background worker "logical replication launcher" (PID 86979) exited with exit code 1
+2022-09-07 09:01:21.150 EDT [86974] LOG:  shutting down
+2022-09-07 09:01:21.160 EDT [86972] LOG:  database system is shut down
