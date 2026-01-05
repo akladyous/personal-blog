@@ -1,0 +1,17 @@
+{
+    "tech stack": [
+        "Ruby on Rails 7.0.3",
+        "PostgreSQL",
+        "Puma (web server)",
+        "Devise (authentication)",
+        "Friendly ID",
+        "Pagy (pagination)",
+        "Stimulus"
+    ],
+    "highlights": [
+        "Developed a full-featured personal blogging platform using Ruby on Rails and PostgreSQL, supporting content creation, publishing workflows, and community interaction through a server-rendered architecture.",
+        "Implemented rich content management with Action Text, Active Storage, and FriendlyId to enable formatted posts, media uploads, and SEO-friendly URLs.",
+        "Designed social interaction features including nested comments, likes, friendships, and follow workflows to support user engagement and content discovery.",
+        "Integrated authentication, pagination, and performance-oriented UI behavior using Devise, Pagy, Turbo Rails, and Stimulus to improve usability and maintainability."
+    ]
+}
